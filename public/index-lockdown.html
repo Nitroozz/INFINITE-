@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>404 // Lockdown</title>
+    <link rel="shortcut icon" href="LOCKDOWN.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; }
+
+        body {
+            background: #060102;
+            min-height: 100vh;
+            font-family: 'Space Mono', monospace;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        /* Background elements — kept subtle */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.55;
+        }
+        .b1 {
+            width: 680px; height: 680px;
+            background: radial-gradient(circle, rgba(180,0,40,0.28), transparent 70%);
+            top: -220px; left: -200px;
+            animation: float1 14s ease-in-out infinite alternate;
+        }
+        .b2 {
+            width: 520px; height: 520px;
+            background: radial-gradient(circle, rgba(220,20,60,0.2), transparent 70%);
+            bottom: -160px; right: -130px;
+            animation: float2 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes float1 {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 30px); }
+        }
+        @keyframes float2 {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-35px, -25px); }
+        }
+
+        .tech-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 0, 40, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 40, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.12) 2px,
+                rgba(0,0,0,0.12) 4px
+            );
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Container wrapper */
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: min(92vw, 480px);
+        }
+
+        /* ASCII title with glitch effect only on the logo/title */
+        .ascii-title {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.35rem, 1.1vw, 0.55rem);
+            line-height: 1.25;
+            letter-spacing: 0.04em;
+            white-space: pre;
+            background: linear-gradient(135deg, #ff1e3c 0%, #ff5570 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 12px rgba(255,30,60,0.4));
+            margin-bottom: 1.2rem;
+            animation: glitch 7s infinite;
+            display: block;
+            text-align: center;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            91% { transform: translate(-2px, 1px); }
+            92% { transform: translate(2px, -1px); }
+            93% { transform: translate(-1px, 2px); }
+            94% { transform: translate(1px, -2px); }
+            95% { transform: translate(0); }
+        }
+
+        /* Card */
+        .error-card {
+            position: relative;
+            width: 100%;
+            padding: clamp(2rem, 5vw, 2.8rem) clamp(1.4rem, 5vw, 3.2rem);
+            text-align: center;
+            background: rgba(30, 0, 8, 0.55);
+            border: 1px solid rgba(255, 40, 70, 0.22);
+            border-radius: 4px;
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .error-card::before,
+        .error-card::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: rgba(255, 50, 80, 0.7);
+            border-style: solid;
+            pointer-events: none;
+        }
+        .error-card::before {
+            top: -1px; left: -1px;
+            border-width: 2px 0 0 2px;
+        }
+        .error-card::after {
+            right: -1px; bottom: -1px;
+            border-width: 0 2px 2px 0;
+        }
+
+        .error-code {
+            font-size: clamp(2.6rem, 9vw, 3.2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff1e3c, #ff5570);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.4rem;
+            line-height: 1;
+            letter-spacing: 0.04em;
+        }
+
+        .error-msg {
+            font-size: 0.68rem;
+            color: rgba(255, 90, 110, 0.65);
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            margin-bottom: 1.3rem;
+        }
+
+        .error-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.68);
+            line-height: 1.7;
+            margin-bottom: 1.6rem;
+        }
+
+        /* Action button */
+        .action-btn {
+            display: inline-block;
+            padding: 0.55rem 1.2rem;
+            background: rgba(160, 0, 30, 0.18);
+            border: 1px solid rgba(255, 40, 70, 0.35);
+            color: rgba(255, 140, 155, 0.9);
+            text-decoration: none;
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            width: 100%;
+        }
+        .action-btn:hover {
+            background: rgba(220, 20, 50, 0.3);
+            color: #fff;
+            border-color: rgba(255, 60, 90, 0.6);
+        }
+
+        .signature {
+            font-size: 0.6rem;
+            color: rgba(255, 90, 110, 0.55);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255, 30, 60, 0.15);
+            padding-top: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        /* Reason box */
+        .reason-box {
+            position: relative;
+            width: 100%;
+            padding: 1.4rem 1.3rem;
+            background: rgba(25, 0, 8, 0.6);
+            border: 1px solid rgba(255, 40, 70, 0.2);
+            border-radius: 4px;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.65;
+            text-align: left;
+            margin-top: 1.2rem;
+        }
+
+        .reason-header {
+            font-size: 0.58rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 90, 110, 0.55);
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(255, 30, 60, 0.12);
+            padding-bottom: 0.4rem;
+        }
+
+        .reason-content {
+            color: rgba(255, 200, 210, 0.85);
+            font-size: 0.78rem;
+            line-height: 1.7;
+        }
+
+        /* Bottom-right floating social links */
+        .social-corner {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
+
+        .social-btn {
+            padding: 0.5rem 0.9rem;
+            background: rgba(30, 0, 8, 0.7);
+            border: 1px solid rgba(255, 40, 70, 0.3);
+            color: rgba(255, 140, 155, 0.9);
+            text-decoration: none;
+            font-size: 0.62rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.2s ease;
+        }
+        .social-btn:hover {
+            background: rgba(220, 20, 50, 0.3);
+            color: #fff;
+            border-color: rgba(255, 60, 90, 0.6);
+        }
+
+        @media (max-width: 480px) {
+            .error-card { padding: 1.8rem 1.2rem; }
+            .error-msg { letter-spacing: 0.14em; }
+            .social-corner { bottom: 1rem; right: 1rem; flex-wrap: wrap; justify-content: flex-end; max-width: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="tech-grid"></div>
+    <div class="scanlines"></div>
+
+    <div class="wrapper">
+        <!-- Original ASCII style restored with balanced spacing -->
+        <pre class="ascii-title">██▓ ███▄    █  █████▒ ██▓ ███▄    █  ██▓▄▄▄█████▓▓█████
+▓██▒ ██ ▀█   █▓██   ▒▓██▒ ██ ▀█   █▓██▒▓  ██▒ ▓▒▓█   ▀
+▒██▒▓██  ▀█ ██▒████ ░▒██▒▓██  ▀█ ██▒▒██▒▒ ▓██░ ▒░▒███
+░██░▓██▒  ▐▌██▒▓█▒  ░░██░▓██▒  ▐▌██▒░██░░ ▓██▓ ░ ▒▓█  ▄
+░██░▒██░   ▓██░▒█░   ░██░▒██░   ▓██░░██░  ▒██▒ ░ ░▒████▒
+░▓  ░▒░   ▒ ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
+
+        <div class="error-card">
+            <div class="error-code">404</div>
+            <div class="error-msg">// Site lockdown active</div>
+            <p class="error-desc">
+                Access To 'INFINITE' Is Restricted For The Time Being, [All Bypass Attempts Are Logged]
+            </p>
+            
+            <a class="action-btn" href="#" role="button" id="enterKeyBtn">[ Bypass ]</a>
+
+            <div class="signature">Monitored by Nitro / A.S</div>
+        </div>
+
+        <!-- Reason box -->
+        <div class="reason-box">
+            <div class="reason-header">
+                // lockdown_reason
+            </div>
+            <div class="reason-content">
+                maintenance /<br><br>
+                Access will be restored once verification is complete.
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom-right floating social buttons -->
+    <div class="social-corner">
+        <a class="social-btn" href="https://discord.gg/invite/vNzvXMWzRF" target="_blank" rel="noopener">Discord</a>
+        <a class="social-btn" href="https://linktr.ee/ashvir_/" target="_blank" rel="noopener">linktr.ee/Ashvir_</a>
+        <a class="social-btn" href="https://www.instagram.com/ashvir.singh_" target="_blank" rel="noopener">Instagram @ashvir.singh_</a>
+    </div>
+
+    <script>
+        document.getElementById('enterKeyBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            const userPass = prompt('Enter access key to continue:');
+            if (userPass) {
+                window.location.href = '/?pass=' + encodeURIComponent(userPass);
+            }
+        });
+    </script>
+</body>
+</html>
