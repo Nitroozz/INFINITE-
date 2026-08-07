@@ -19,7 +19,11 @@
 **INFINITE** is a web proxy used to avoid internet filtering on any device, optimized for Chromebooks and restricted environments. 
 
 This project is a custom implementation based on <a href="https://github.com/MercuryWorkshop/scramjet">Scramjet</a> by **Mercury Workshop**, designed with security, developer-friendliness, and performance in mind. By utilizing client-side JavaScript/HTML rewriting and **Wisp** for low-latency WebSocket transport, INFINITE can handle complex modern web applications, media streaming, and 3D WebGL assets.
+## CREDITS
 
+Built by Nitro (Ashvir S.).
+
+Note: This project is a modified and configured implementation of open-source software created by Mercury Workshop. Full credit goes to the original developers for the creation of what led to this. **This repository serves as a personal deployment and testing lab.**
 ---
 
 ## 🔒 Custom Lockdown Feature
@@ -76,3 +80,6 @@ cd INFINITE-
 # Install & Start
 pnpm install # or npm install
 pnpm start   # or npm start
+
+
+
