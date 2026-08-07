@@ -1,4 +1,5 @@
-<p align="center"><img src="https://raw.githubusercontent.com/MercuryWorkshop/scramjet/main/assets/scramjet.png" height="200"></p>
+<img width="599" height="114" alt="Screenshot 2026-08-06 120029" src="https://github.com/user-attachments/assets/3ea4a38a-b114-44b0-8ae6-38fa0663d31b" />
+
 
 <h1 align="center">INFINITE</h1>
 
