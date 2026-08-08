@@ -64,6 +64,21 @@ fastify.register(fastifyStatic, {
     decorateReply: false,
 });
 
+fastify.post('/unlock', async (req, reply) => {
+    const body = req.body || {};
+    const password = body.password || '';
+
+    if (password === ADMIN_PASSWORD) {
+        reply.header(
+            'Set-Cookie',
+            `lockdown_auth=${ADMIN_PASSWORD}; Path=/; SameSite=Lax; Max-Age=600`
+        );
+        return reply.code(200).send({ ok: true });
+    }
+
+    return reply.code(401).send({ ok: false });
+});
+
 // ── GLOBAL LOCKDOWN HOOK ──
 fastify.addHook("onRequest", async (req, reply) => {
     // 1. KILL THE CACHE: Force the browser to check the server every single time
@@ -80,18 +95,18 @@ fastify.addHook("onRequest", async (req, reply) => {
             req.url.startsWith("/libcurl/") ||
             req.url.startsWith("/baremux/") ||
             req.url.endsWith("/wisp/") ||
-            req.url.startsWith("/index-lockdown.html")
+            req.url.startsWith("/index-lockdown.html") ||
+            req.url.startsWith("/unlock")
         ) {
             return;
         }
 
-        // 3. Check query parameter and existing cookies
-        const userPass = req.query.pass;
+        // 3. Check cookie / auth state
         const cookies = req.headers.cookie || "";
         const hasAuthCookie = cookies.includes(`lockdown_auth=${ADMIN_PASSWORD}`);
 
-        // 4. Password matched OR cookie exists -> authenticated
-        if (userPass === ADMIN_PASSWORD || hasAuthCookie) {
+        // 4. Authorized cookie -> authenticated
+        if (hasAuthCookie) {
             // Set cookie with Max-Age so it self-destructs (600 seconds = 10 minutes)
             reply.header(
                 "Set-Cookie",

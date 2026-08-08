@@ -258,8 +258,11 @@
             <p class="error-desc">
                 The requested application is temporarily offline for routine updates.
             </p>
-            
-            <a class="action-btn" href="#" role="button" id="enterKeyBtn">[ Continue ]</a>
+
+            <form id="unlock-form" class="unlock-form">
+                <input class="unlock-input" type="password" id="unlock-password" placeholder="Enter code" aria-label="Access code" autocomplete="current-password" />
+                <button class="action-btn" type="submit" id="enterKeyBtn">[ Continue ]</button>
+            </form>
 
             <div class="signature">System Status: Offline</div>
         </div>
@@ -276,11 +279,41 @@
     </div>
 
     <script>
-        document.getElementById('enterKeyBtn').addEventListener('click', function (e) {
+        document.getElementById('unlock-form').addEventListener('submit', async function (e) {
             e.preventDefault();
-            const userPass = prompt('Enter code to continue:');
-            if (userPass) {
-                window.location.href = '/?pass=' + encodeURIComponent(userPass);
+            const password = document.getElementById('unlock-password').value.trim();
+            if (!password) return;
+
+            try {
+                const res = await fetch('/unlock', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password: password })
+                });
+
+                if (res.ok) {
+                    window.location.href = '/';
+                } else {
+                    const status = document.createElement('div');
+                    status.className = 'unlock-status';
+                    status.textContent = 'Unable to continue';
+                    const form = document.getElementById('unlock-form');
+                    if (form) {
+                        const target = form.parentElement;
+                        if (target) target.appendChild(status);
+                    }
+                }
+            } catch (err) {
+                const status = document.createElement('div');
+                status.className = 'unlock-status';
+                status.textContent = 'Unable to continue';
+                const form = document.getElementById('unlock-form');
+                if (form) {
+                    const target = form.parentElement;
+                    if (target) target.appendChild(status);
+                }
             }
         });
     </script>
