@@ -11,7 +11,7 @@
   <a href="#-setup--usage">Setup & Usage</a> •
   <a href="#-credits--acknowledgments">Credits</a>
 </p>
-<iframe src="https://discord.com/widget?id=1241644314325422111&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
 ---
 
 ## 📌 Overview
