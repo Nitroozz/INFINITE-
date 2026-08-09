@@ -213,35 +213,50 @@
         }
 
         /* ── Credit line ── */
-        .credit { font-family:'Space Mono',monospace; font-size:0.58rem; color:rgba(180,0,255,0.35); letter-spacing:0.18em; text-transform:uppercase; margin-top:0.5rem; }
-        .credit span { color:rgba(255,30,100,0.55); }
+        .credit { font-family:'Space Mono',monospace; font-size:0.58rem; color:rgba(255, 255, 255, 0.87); letter-spacing:0.18em; text-transform:uppercase; margin-top:0.5rem; }
+        .credit span { color:rgba(247, 6, 6, 0.966); }
 
         /* ── Divider ── */
-        .divider { display:flex; align-items:center; gap:0.8rem; margin:1.4rem 0 1.2rem; color:rgba(180,0,255,0.35); font-size:0.6rem; letter-spacing:0.2em; }
+        .divider { display:flex; align-items:center; gap:0.8rem; margin:1.4rem 0 1.2rem; color:rgba(253, 252, 253, 0.911); font-size:0.6rem; letter-spacing:0.2em; }
         .divider::before, .divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(180,0,255,0.4),rgba(255,0,80,0.3),transparent); }
 
         /* ── Search bar ── */
         #sj-form { display:flex; width:100%; margin-top:0.4rem; }
         .search-prefix { display:flex; align-items:center; padding:0 0.75rem; background:rgba(0,0,0,0.5); border:1px solid rgba(150,0,255,0.25); border-right:none; border-radius:3px 0 0 3px; color:rgba(180,0,255,0.6); font-family:'Space Mono',monospace; font-size:0.8rem; user-select:none; }
-        #sj-address { flex:1; padding:0.7em 0.9em; border:1px solid rgba(150,0,255,0.25); border-left:none; border-right:none; background:rgba(0,0,0,0.45); color:#e0d0ff; font-size:0.82rem; font-family:'Space Mono',monospace; outline:none; transition:border-color 0.2s,box-shadow 0.2s; caret-color:rgba(200,0,255,0.9); }
+        #sj-address { flex:1; padding:0.7em 0.9em; border:1px solid rgba(252, 0, 0, 0.377); border-left:none; border-right:none; background:rgba(0,0,0,0.45); color:#e0d0ff; font-size:0.82rem; font-family:'Space Mono',monospace; outline:none; transition:border-color 0.2s,box-shadow 0.2s; caret-color:rgba(187, 127, 204, 0.9); }
         #sj-address::placeholder { color:rgba(180,100,255,0.25); }
         #sj-address:focus { border-color:rgba(200,0,255,0.55); box-shadow:0 0 0 3px rgba(150,0,255,0.1),inset 0 0 20px rgba(100,0,200,0.06); }
         #sj-form button { padding:0.7em 1.1em; background:rgba(120,0,220,0.2); border:1px solid rgba(150,0,255,0.25); border-left:none; border-radius:0 3px 3px 0; color:rgba(200,100,255,0.7); font-size:0.9rem; font-family:'Space Mono',monospace; cursor:pointer; transition:all 0.2s; }
         #sj-form button:hover { background:rgba(160,0,255,0.35); color:#fff; border-color:rgba(200,0,255,0.6); }
 
         /* ── Status line ── */
-        .status-line { display:flex; align-items:center; gap:0.5rem; margin-top:1rem; font-size:0.6rem; color:rgba(180,0,255,0.3); letter-spacing:0.12em; justify-content:center; }
+        .status-line { display:flex; align-items:center; gap:0.5rem; margin-top:1rem; font-size:0.6rem; color:rgba(253, 253, 253, 0.884); letter-spacing:0.12em; justify-content:center; }
         .status-dot { width:5px; height:5px; border-radius:50%; background:rgba(100,255,150,0.7); box-shadow:0 0 6px rgba(100,255,150,0.5); animation:pulse 2.5s ease-in-out infinite; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
         /* ── Version ── */
+        .version-badge {
+            position: fixed;
+            right: 14px;
+            bottom: 12px;
+            z-index: 30;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.66rem;
+            line-height: 1;
+            letter-spacing: 0.16em;
+            text-transform: lowercase;
+            color: rgba(240, 230, 250, 0.78);
+            pointer-events: none;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 4px rgba(200, 0, 255, 0.35);
+        }
         .version {
             margin-top: 0.9rem;
-            font-size: 0.77rem;
+            font-size: 0.72rem;
             letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgb(255, 255, 255);
+            text-transform: lowercase;
+            color: rgba(235, 230, 245, 0.86);
             font-family: 'Space Mono', monospace;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
         }
 
         /* ── Error display ── */
@@ -259,7 +274,7 @@
             display: inline-flex; align-items: center; gap: 0.45rem;
             background: rgba(5,0,14,0.65); backdrop-filter: blur(12px);
             border: 4px solid rgba(150,0,255,0.28);
-            color: rgba(180,0,255,0.55);
+            color: rgba(253, 253, 253, 0.986);
             transition: color 0.2s, background 0.2s, box-shadow 0.2s;
             overflow: hidden;
             animation: borderpulse 3.5s ease-in-out infinite;
@@ -404,10 +419,64 @@
         .social-text { display:flex; flex-direction:column; gap:0.1rem; }
         .social-name { font-size:0.62rem; opacity:0.55; letter-spacing:0.12em; text-transform:uppercase; }
         .social-handle { font-size:0.75rem; font-weight:700; }
+
+        .audio-cluster {
+            position: fixed;
+            top: 1.2rem;
+            right: 1.2rem;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.26rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.28);
+            background: rgba(30, 0, 34, 0.72);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .audio-cluster button {
+            border: 0;
+            background: transparent;
+            color: #eee;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            padding: 0.34rem 0.58rem;
+            border-radius: 999px;
+            transition: background 180ms ease, transform 180ms ease;
+        }
+        .audio-cluster button:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-1px);
+        }
+        .audio-cluster button.active {
+            background: rgba(255, 70, 160, 0.24);
+            color: #fff;
+        }
+        .audio-cluster button:focus {
+            outline: 1px solid rgba(255,255,255,0.75);
+        }
+        .volume-slider {
+            width: 86px;
+            accent-color: #ff42bd;
+            cursor: pointer;
+            opacity: 0.95;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            background: #fff;
+        }
     </style>
 </head>
 
 <body>
+    <audio id="homeAudio" loop preload="auto" src="/music.mp3"></audio>
+    <div class="audio-cluster">
+        <button id="musicToggle" type="button" aria-label="Toggle music">♫</button>
+        <input class="volume-slider" id="volumeSlider" type="range" min="0" max="1" value="0.45" step="0.01" aria-label="Music volume" />
+        <button id="muteToggle" type="button" aria-label="Mute music">Mute</button>
+    </div>
     <div id="home">
         <!-- Background elements -->
         <div class="blob b1"></div>
@@ -433,7 +502,7 @@
 ░██░▓██▒  ▐▌██▒▓█▒  ░░██░▓██▒  ▐▌██▒░██░░ ▓██▓ ░ ▒▓█  ▄
 ░██░▒██░   ▓██░▒█░   ░██░▒██░   ▓██░░██░  ▒██▒ ░ ░▒████▒
 ░▓  ░▒░   ▒ ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
-            <div class="credit">developed by <span>Nitro / A.S</span></div>
+            <div class="credit">developed by <span> <span>--  Nitro / A.S</span></div>
 
             <div class="divider">// YOU ARE SOLEY RESPONSIBLE FOR YOUR ACTIONS //</div>
 
@@ -453,10 +522,10 @@
 
             <div class="status-line">
                 <div class="status-dot"></div>
-                <span>SCRAMJET ENGINE&nbsp;|&nbsp; ROUTING &nbsp;|&nbsp; READY</span>
+                <span>NETWORK SYSTEM&nbsp;|&nbsp; LIVE &nbsp;|&nbsp; READY</span>
             </div>
 
-            <div class="version">version: BETA TEST BUILD</div>
+            <div class="version">version: Public Beta</div>
 
             <div class="error-wrap">
                 <p id="sj-error"></p>
@@ -470,19 +539,21 @@
         <a class="corner-btn discord-btn" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">◈ discord</a>
     </div>
 
+    <div class="version-badge">version: Public Beta</div>
+
     <!-- Settings modal -->
     <div class="cfg-overlay" id="cfg-overlay" onclick="closeCfg()"></div>
     <div class="cfg-modal" id="cfg-modal">
-        <div class="cfg-modal-title">// connection settings</div>
+        <div class="cfg-modal-title">// system settings</div>
 
-        <label class="cfg-label">Wisp Server URL</label>
+        <label class="cfg-label">Endpoint URL</label>
         <input class="cfg-input" id="cfg-wisp" type="text" spellcheck="false" placeholder="wss://host/wisp/" />
 
-        <label class="cfg-label">Transport</label>
+        <label class="cfg-label">Mode</label>
         <div class="transport-grid">
-            <button type="button" class="t-btn" data-transport="/epoxy/index.mjs">Epoxy</button>
-            <button type="button" class="t-btn" data-transport="/libcurl/index.mjs">libcurl</button>
-            <button type="button" class="t-btn" data-transport="/baremod/index.mjs">Bare v3</button>
+            <button type="button" class="t-btn" data-transport="/epoxy/index.mjs">Mode A</button>
+            <button type="button" class="t-btn" data-transport="/libcurl/index.mjs">Mode B</button>
+            <button type="button" class="t-btn" data-transport="/baremod/index.mjs">Mode C</button>
         </div>
 
         <button type="button" class="save-btn" onclick="saveSettings()">[ apply &amp; save ]</button>
@@ -494,13 +565,13 @@
     <div class="panel" id="panel">
         <button type="button" class="pcls" onclick="closePanel()">[x]</button>
         <div class="ptitle">INFINITE</div>
-        <div class="psub">// access gateway</div>
+        <div class="psub">// system panel</div>
 
         <div class="sec">
             <div class="slabel">// how_to_use</div>
             <div class="pc purple">
                 <h3>Getting Started</h3>
-                Type any URL or search term above and press GO. Traffic is routed through the configured browsing endpoint.
+                Type any URL or search term above and press GO. Traffic is sent through the configured endpoint.
         <div class="sec">
             <div class="slabel">// tip</div>
             <div class="pc pink">
@@ -610,10 +681,75 @@
             // Intercept Form Submission and Stop Default Refresh (?) behavior
             var form = document.getElementById('sj-form');
             var home = document.getElementById('home');
+            var audio = document.getElementById('homeAudio');
+            var musicToggle = document.getElementById('musicToggle');
+            var muteToggle = document.getElementById('muteToggle');
+            var volumeSlider = document.getElementById('volumeSlider');
             if (form) {
                 form.addEventListener('submit', function(e) { 
                     e.preventDefault(); // Prevents default browser HTML submit (? append)
                     if (home) home.classList.add('hidden');
+                    if (audio) audio.pause();
+                    if (musicToggle) musicToggle.classList.remove('active');
+                });
+            }
+
+            if (audio) {
+                audio.volume = 0.45;
+                audio.muted = false;
+                audio.loop = true;
+                try {
+                    audio.play().catch(function() {
+                        if (musicToggle) musicToggle.classList.remove('active');
+                    });
+                    if (musicToggle) musicToggle.classList.add('active');
+                } catch (err) {
+                    if (musicToggle) musicToggle.classList.remove('active');
+                }
+            }
+
+            if (musicToggle) {
+                musicToggle.addEventListener('click', function() {
+                    if (!audio) return;
+                    if (audio.paused) {
+                        audio.volume = 0.45;
+                        audio.play().catch(function() {});
+                        musicToggle.classList.add('active');
+                    } else {
+                        audio.pause();
+                        musicToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            if (volumeSlider && audio) {
+                volumeSlider.addEventListener('input', function() {
+                    var v = Number(volumeSlider.value);
+                    if (Number.isNaN(v)) return;
+                    audio.volume = Math.max(0, Math.min(1, v));
+                    if (audio.volume === 0) {
+                        audio.muted = true;
+                        if (muteToggle) {
+                            muteToggle.classList.add('active');
+                            muteToggle.textContent = 'Unmute';
+                        }
+                    } else {
+                        audio.muted = false;
+                        if (muteToggle) {
+                            muteToggle.classList.remove('active');
+                            muteToggle.textContent = 'Mute';
+                        }
+                    }
+                });
+            }
+
+            if (muteToggle) {
+                muteToggle.addEventListener('click', function() {
+                    if (!audio) return;
+                    var nextMuted = audio.muted ? false : true;
+                    audio.muted = nextMuted;
+                    muteToggle.classList.toggle('active', nextMuted);
+                    muteToggle.textContent = nextMuted ? 'Unmute' : 'Mute';
                 });
             }
 
