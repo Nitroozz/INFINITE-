@@ -81,5 +81,6 @@ cd INFINITE-
 pnpm install # or npm install
 pnpm start   # or npm start
 
+<iframe src="https://discord.com/widget?id=1241644314325422111&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 
