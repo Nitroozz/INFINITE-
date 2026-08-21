@@ -20,9 +20,42 @@ const ADMIN_PASSWORD = "Blackwell706";
 // Wisp Configuration: Refer to the documentation at https://www.npmjs.com/package/@mercuryworkshop/wisp-js
 
 logging.set_level(logging.NONE);
+
+// Server-side ad, tracker, and telemetry blacklist
+// Server-side comprehensive ad, tracker, and analytics blacklist
+const adBlacklist = [
+    // Google Ads & Analytics
+    /.*googlesyndication\.com/,
+    /.*googleadservices\.com/,
+    /.*adservice\.google\.com/,
+    /.*google-analytics\.com/,
+    /.*googletagmanager\.com/,
+
+    // DoubleClick & Amazon Ads
+    /.*doubleclick\.net/,
+    /.*\.s3\.amazonaws\.com/, // Catches adtago.s3, analyticsengine.s3, etc.
+
+    // Popular Ad Networks (Adcolony, Media.net, Criteo, etc.)
+    /.*adcolony\.com/,
+    /.*media\.net/,
+    /.*adnxs\.com/,
+    /.*criteo\.com/,
+    /.*amazon-adsystem\.com/,
+    /.*taboola\.com/,
+    /.*outbrain\.com/,
+
+    // Analytics & Heatmaps (Hotjar, Mouseflow, LuckyOrange, FreshWorks)
+    /.*hotjar\.com/,
+    /.*hotjar\.io/,
+    /.*mouseflow\.com/,
+    /.*freshmarketer\.com/,
+    /.*luckyorange\.com/,
+    /.*scorecardresearch\.com/
+];
+
 Object.assign(wisp.options, {
     allow_udp_streams: false,
-    hostname_blacklist: [/example\.com/],
+    hostname_blacklist: adBlacklist,
     dns_servers: ["1.1.1.3", "1.0.0.3"],
 });
 

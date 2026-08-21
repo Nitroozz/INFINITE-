@@ -137,6 +137,7 @@
             88%  { opacity: 1; }
             100% { transform: translateX(450%); opacity: 0; }
         }
+        
 
         /* ── Orbiting rings ── */
         .orbit-ring {
@@ -504,14 +505,15 @@
 ░▓  ░▒░   ▒ ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
             <div class="credit">developed by <span> <span>--  Nitro / A.S</span></div>
 
-            <div class="divider">// YOU ARE SOLEY RESPONSIBLE FOR YOUR ACTIONS //</div>
+            <div class="divider">// YOU ARE SOLEY RESPONSIBLE FOR YOUR ACTIONS //<br>NOT ALL WEBSITES WILL WORK</div>
 
             <form id="sj-form">
-                <input id="sj-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+                <input id="sj-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
                 <span class="search-prefix">&gt;_</span>
                 <input
                     id="sj-address"
                     type="text"
+                    value="duckduckgo.com"
                     placeholder="enter url or search..."
                     autocomplete="off"
                     autocapitalize="off"
@@ -520,12 +522,7 @@
                 <button type="submit">GO</button>
             </form>
 
-            <div class="status-line">
-                <div class="status-dot"></div>
-                <span>NETWORK SYSTEM&nbsp;|&nbsp; LIVE &nbsp;|&nbsp; READY</span>
-            </div>
-
-            <div class="version">version: Public Beta</div>
+            <div class="version" style="margin-top: 1rem; color: rgba(255, 120, 160, 0.9); letter-spacing: 0.14em;">version: Public Beta</div>
 
             <div class="error-wrap">
                 <p id="sj-error"></p>
@@ -545,6 +542,7 @@
     <div class="cfg-overlay" id="cfg-overlay" onclick="closeCfg()"></div>
     <div class="cfg-modal" id="cfg-modal">
         <div class="cfg-modal-title">// system settings</div>
+        <div class="cfg-modal-title">MAKE SURE YOU KNOW WHAT YOU'RE DOING</div>
 
         <label class="cfg-label">Endpoint URL</label>
         <input class="cfg-input" id="cfg-wisp" type="text" spellcheck="false" placeholder="wss://host/wisp/" />
@@ -555,6 +553,8 @@
             <button type="button" class="t-btn" data-transport="/libcurl/index.mjs">Mode B</button>
             <button type="button" class="t-btn" data-transport="/baremod/index.mjs">Mode C</button>
         </div>
+        <div>.</div>
+        <div class="cfg-modal-title">MAKE SURE YOU KNOW WHAT YOU'RE DOING</div>
 
         <button type="button" class="save-btn" onclick="saveSettings()">[ apply &amp; save ]</button>
         <div class="cfg-status" id="cfg-status"></div>
