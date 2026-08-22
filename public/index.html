@@ -52,28 +52,6 @@
             width: 100%;
         }
 
-        /* ── Animated blobs (Restored Custom Sizes & Colors) ── */
-        .blob {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(40px);
-            opacity: 0.55;
-        }
-        .b1 { width: 650px; height: 650px; background: #8a00c2; top: -150px; left: -150px; animation: b1m 12s ease-in-out infinite; }
-        .b2 { width: 500px; height: 500px; background: #c20052; bottom: -120px; right: -120px; animation: b2m 15s ease-in-out infinite; }
-        .b3 { width: 400px; height: 400px; background: #5500ff; top: 40%; left: 50%; animation: b3m 18s ease-in-out infinite; }
-        .b4 { width: 300px; height: 300px; background: #ff007b; top: 10%; right: 15%; animation: b4m 10s ease-in-out infinite; }
-        .b5 { width: 450px; height: 450px; background: #3b0082; bottom: 15%; left: 10%; animation: b5m 14s ease-in-out infinite; }
-        .b6 { width: 250px; height: 250px; background: #ff2a85; top: 65%; right: 20%; animation: b6m 11s ease-in-out infinite; }
-
-        @keyframes b1m { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(90px,50px) scale(1.05)} 66%{transform:translate(20px,120px) scale(0.95)} }
-        @keyframes b2m { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-70px,-40px) scale(1.08)} 66%{transform:translate(-20px,-90px) scale(0.92)} }
-        @keyframes b3m { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.12) rotate(15deg)} }
-        @keyframes b4m { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,40px)} }
-        @keyframes b5m { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(60px,-30px) scale(1.06)} 70%{transform:translate(-25px,50px) scale(0.96)} }
-        @keyframes b6m { 0%,100%{transform:translate(0,0) scale(1) rotate(0deg)} 50%{transform:translate(35px,-45px) scale(1.1) rotate(10deg)} }
-
         /* ── Floating particles ── */
 		.particles {
 			position: fixed;
@@ -85,8 +63,8 @@
 		.particle {
 			position: absolute;
 			border-radius: 50%;
-			background: rgba(252, 252, 252, 0.75);
-			box-shadow: 0 0 6px rgba(200, 80, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 7px rgba(255, 255, 255, 0.95), 0 0 15px rgba(220, 70, 255, 0.95), 0 0 26px rgba(200, 30, 180, 0.55);
 			animation: float-particle linear infinite;
 		}
 		@keyframes float-particle {
@@ -108,9 +86,26 @@
             z-index: 1;
             animation: grid-drift 40s linear infinite;
         }
+        .grid-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 0, 0, 0.75) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.75) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0;
+            animation: grid-red-pulse 8s ease-in-out infinite;
+        }
         @keyframes grid-drift {
             0%   { transform: translate(0, 0); }
             100% { transform: translate(60px, 60px); }
+        }
+        @keyframes grid-red-pulse {
+            0%, 30%, 100% { opacity: 0; filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0)); }
+            42% { opacity: 0.45; filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.75)); }
+            52%, 82% { opacity: 1; filter: drop-shadow(0 0 8px rgba(255, 0, 0, 1)) drop-shadow(0 0 20px rgba(255, 0, 0, 0.7)); }
+            94% { opacity: 0.35; filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.6)); }
         }
 
         /* ── Sweeping scan beam ── */
@@ -138,32 +133,6 @@
             100% { transform: translateX(450%); opacity: 0; }
         }
         
-
-        /* ── Orbiting rings ── */
-        .orbit-ring {
-            position: fixed;
-            border-radius: 50%;
-            border: 1px solid rgba(180, 0, 255, 0.12);
-            pointer-events: none;
-            z-index: 1;
-        }
-        .orbit-ring.r1 {
-            width: 900px; height: 900px;
-            top: 50%; left: 50%;
-            margin: -450px 0 0 -450px;
-            animation: orbit-spin 60s linear infinite;
-        }
-        .orbit-ring.r2 {
-            width: 1200px; height: 1200px;
-            top: 50%; left: 50%;
-            margin: -600px 0 0 -600px;
-            border-color: rgba(255, 40, 100, 0.08);
-            animation: orbit-spin 90s linear infinite reverse;
-        }
-        @keyframes orbit-spin {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-        }
 
         /* ── Scanlines ── */
         .scanlines {
@@ -480,16 +449,6 @@
     </div>
     <div id="home">
         <!-- Background elements -->
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="blob b3"></div>
-        <div class="blob b4"></div>
-        <div class="blob b5"></div>
-        <div class="blob b6"></div>
-
-        <div class="orbit-ring r1"></div>
-        <div class="orbit-ring r2"></div>
-
         <div class="grid-overlay"></div>
         <div class="scan-beam"></div>
         <div class="scanlines"></div>
@@ -755,7 +714,7 @@
 
             var container = document.getElementById('particles');
             if (container) {
-                var count = 96;
+                var count = 160;
                 for (var i = 0; i < count; i++) {
                     var p = document.createElement('div');
                     p.className = 'particle';

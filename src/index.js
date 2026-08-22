@@ -127,6 +127,7 @@ fastify.addHook("onRequest", async (req, reply) => {
             req.url.startsWith("/scram/") ||
             req.url.startsWith("/libcurl/") ||
             req.url.startsWith("/baremux/") ||
+            req.url.startsWith("/gifs/") ||
             req.url.endsWith("/wisp/") ||
             req.url.startsWith("/index-lockdown.html") ||
             req.url.startsWith("/unlock")

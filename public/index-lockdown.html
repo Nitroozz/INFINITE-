@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>404 // Not Found</title>
+    <title>LOCKED // Access Restricted</title>
     <link rel="shortcut icon" href="LOCKDOWN.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     <style>
@@ -124,7 +124,7 @@
             border-radius: 4px;
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 0 1px rgba(255, 30, 60, 0.06), 0 0 40px rgba(0, 0, 0, 0.7), 0 0 55px rgba(180, 0, 35, 0.12);
         }
 
         .error-card::before,
@@ -171,6 +171,35 @@
             color: rgba(255, 255, 255, 0.68);
             line-height: 1.7;
             margin-bottom: 1.6rem;
+        }
+
+        .unlock-form {
+            display: grid;
+            gap: 0.65rem;
+        }
+        .unlock-input {
+            width: 100%;
+            padding: 0.75rem 0.9rem;
+            background: rgba(8, 0, 4, 0.72);
+            border: 1px solid rgba(255, 70, 90, 0.3);
+            border-radius: 2px;
+            color: #fff;
+            caret-color: #ff5570;
+            font: inherit;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .unlock-input::placeholder {
+            color: rgba(255, 150, 165, 0.5);
+            text-transform: uppercase;
+        }
+        .unlock-input:focus {
+            background: rgba(35, 0, 10, 0.8);
+            border-color: rgba(255, 80, 105, 0.8);
+            box-shadow: 0 0 0 3px rgba(255, 30, 60, 0.1), 0 0 18px rgba(220, 20, 50, 0.18);
         }
 
         .action-btn {
@@ -236,6 +265,76 @@
             font-size: 0.78rem;
             line-height: 1.7;
         }
+
+        .joke-popup {
+            position: fixed;
+            top: 50%;
+            right: 1.25rem;
+            z-index: 20;
+            width: min(260px, 30vw);
+            max-height: min(260px, 42vh);
+            padding: 0.35rem;
+            overflow: hidden;
+            background: rgba(8, 0, 4, 0.94);
+            border: 1px solid rgba(255, 70, 90, 0.55);
+            border-radius: 3px;
+            box-shadow: 0 0 18px rgba(220, 20, 50, 0.3), 0 12px 30px rgba(0, 0, 0, 0.65);
+            transform: translateY(-50%) translateX(18px) rotate(2deg);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .joke-popup.open {
+            transform: translateY(-50%) translateX(0) rotate(2deg);
+            opacity: 1;
+        }
+        .joke-popup.left {
+            right: auto;
+            left: 1.25rem;
+            transform: translateY(-50%) translateX(-18px) rotate(-2deg);
+        }
+        .joke-popup.left.open {
+            transform: translateY(-50%) translateX(0) rotate(-2deg);
+        }
+        .joke-popup .joke-frame {
+            width: 100% !important;
+            height: min(250px, 40vh) !important;
+            max-width: 100% !important;
+            max-height: 250px !important;
+            margin: 0;
+            overflow: hidden;
+            border: 0;
+            object-fit: contain;
+        }
+        .joke-option {
+            position: absolute;
+            inset: 0.35rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .joke-option.active {
+            position: relative;
+            inset: auto;
+            opacity: 1;
+            visibility: visible;
+        }
+        @media (max-width: 700px) {
+            .joke-popup,
+            .joke-popup.left {
+                top: auto;
+                right: 1rem;
+                bottom: 1rem;
+                left: 1rem;
+                width: auto;
+                max-height: min(300px, 42vh);
+                transform: translateY(18px) rotate(0deg);
+            }
+            .joke-popup.open,
+            .joke-popup.left.open {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -253,18 +352,18 @@
 ░▓  ░▒░   ▒ ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
 
         <div class="error-card">
-            <div class="error-code">404</div>
-            <div class="error-msg">// Access Denied</div>
+            <div class="error-code">LOCKED</div>
+            <div class="error-msg">// System Lockdown Active</div>
             <p class="error-desc">
-                The requested resource is currently unavailable, Try again later when lockdown is lifted.
+                Infinite is temporarily offline. This is an application-level lockdown, not a GoGuardian, browser, network, or device block.
             </p>
 
             <form id="unlock-form" class="unlock-form">
                 <input class="unlock-input" type="password" id="unlock-password" placeholder="Enter code" aria-label="Access code" autocomplete="current-password" />
-                <button class="action-btn" type="submit" id="enterKeyBtn">[ Continue ]</button>
+                <button class="action-btn" type="submit" id="enterKeyBtn">[ Enter Access Code ]</button>
             </form>
 
-            <div class="signature">  Offline</div>
+            <div class="signature">Offline // Access Restricted</div>
         </div>
 
         <div class="reason-box">
@@ -273,15 +372,58 @@
             </div>
             <div class="reason-content">
                 System is offline for unknown reasons as of now.<br><br>
+                This notice was generated by Infinite. It does not indicate a restriction from your device or network.
             </div>
         </div>
     </div>
 
+    <div class="joke-popup" id="joke-popup" aria-hidden="true">
+        <img class="joke-option joke-frame" src="gifs/clash-royale-emotes.gif" alt="Clash Royale reaction" />
+        <img class="joke-option joke-frame" src="gifs/fisherman-prince.gif" alt="Fisherman Prince reaction" />
+        <img class="joke-option joke-frame" src="gifs/fnaf-fnaf-memes.gif" alt="FNAF reaction" />
+        <img class="joke-option joke-frame" src="gifs/half-life-gman.gif" alt="Half-Life G-Man reaction" />
+        <img class="joke-option joke-frame" src="gifs/invincible-rick-and-morty-invincible-rick-and-morty-meme.gif" alt="Invincible Rick and Morty reaction" />
+    </div>
+
     <script>
+        function showWrongCodeJoke() {
+            var popup = document.getElementById('joke-popup');
+            if (!popup) return;
+
+            var jokes = popup.querySelectorAll('.joke-option');
+            jokes.forEach(function(joke) { joke.classList.remove('active'); });
+            if (jokes.length) {
+                var selectedJoke = jokes[Math.floor(Math.random() * jokes.length)];
+                selectedJoke.classList.add('active');
+            }
+            popup.classList.toggle('left', Math.random() < 0.5);
+            window.setTimeout(function() {
+                popup.classList.add('open');
+                popup.setAttribute('aria-hidden', 'false');
+            }, 250 + Math.random() * 650);
+
+            window.setTimeout(function() {
+                popup.classList.remove('open');
+                popup.setAttribute('aria-hidden', 'true');
+            }, 6750);
+        }
+
+        function scheduleRandomJoke() {
+            window.setTimeout(function() {
+                showWrongCodeJoke();
+                scheduleRandomJoke();
+            }, 12000 + Math.random() * 18000);
+        }
+
+        scheduleRandomJoke();
+
         document.getElementById('unlock-form').addEventListener('submit', async function (e) {
             e.preventDefault();
             const password = document.getElementById('unlock-password').value.trim();
-            if (!password) return;
+            if (!password) {
+                showWrongCodeJoke();
+                return;
+            }
 
             try {
                 const res = await fetch('/unlock', {
@@ -295,6 +437,7 @@
                 if (res.ok) {
                     window.location.href = '/';
                 } else {
+                    showWrongCodeJoke();
                     const status = document.createElement('div');
                     status.className = 'unlock-status';
                     status.textContent = 'Unable to continue';
