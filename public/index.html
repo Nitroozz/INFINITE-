@@ -141,6 +141,43 @@
             pointer-events: none; z-index: 2;
         }
 
+        /* ── GIF lineup ── */
+        .gif-conversation {
+            position: fixed;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+        }
+        .gif-speaker {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            width: clamp(82px, 10vw, 126px);
+            animation: speaker-float 5s ease-in-out infinite;
+        }
+        .gif-speaker img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .speaker-a { bottom: 7%; left: calc(50% - 118px); animation-delay: -0.4s; }
+        .speaker-b { bottom: 6.5rem; left: 1.5rem; animation-delay: -1.2s; }
+        .speaker-c { bottom: 7%; left: calc(50% + 12px); animation-delay: -2.1s; }
+        .speaker-d { bottom: 7%; right: 7%; animation-delay: -3.3s; }
+        @keyframes speaker-float {
+            0%, 100% { transform: translateY(0) rotate(-1deg); }
+            50% { transform: translateY(-7px) rotate(1deg); }
+        }
+        @media (max-width: 700px) {
+            .gif-speaker { width: 58px; }
+            .speaker-a { bottom: 5%; left: calc(50% - 64px); }
+            .speaker-b { bottom: 5.8rem; left: 1rem; }
+            .speaker-c { bottom: 5%; left: calc(50% + 6px); }
+            .speaker-d { bottom: 5%; right: 1rem; }
+        }
+
         /* ── Glass card ── */
         .glass {
             position: relative; z-index: 10; text-align: center;
@@ -453,6 +490,20 @@
         <div class="scan-beam"></div>
         <div class="scanlines"></div>
         <div class="particles" id="particles"></div>
+        <div class="gif-conversation" aria-hidden="true">
+            <div class="gif-speaker speaker-a">
+                <img src="gifs/baller-roblox.gif" alt="" />
+            </div>
+            <div class="gif-speaker speaker-b">
+                <img src="gifs/helldivers-helldivers-2.webp" alt="" />
+            </div>
+            <div class="gif-speaker speaker-c">
+                <img src="gifs/i-know-what-we're-gonna-do-today-baljeet.gif" alt="" />
+            </div>
+            <div class="gif-speaker speaker-d">
+                <img src="gifs/perry-the-platypus-phineas-and-ferb.gif" alt="" />
+            </div>
+        </div>
 
         <!-- Main card -->
         <div class="glass">
@@ -481,7 +532,7 @@
                 <button type="submit">GO</button>
             </form>
 
-            <div class="version" style="margin-top: 1rem; color: rgba(255, 120, 160, 0.9); letter-spacing: 0.14em;">version: Public-Beta</div>
+            <div class="version" style="margin-top: 1rem; color: rgba(255, 120, 160, 0.9); letter-spacing: 0.14em;">version: 1.0</div>
 
             <div class="error-wrap">
                 <p id="sj-error"></p>
@@ -495,7 +546,7 @@
         <a class="corner-btn discord-btn" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">◈ discord</a>
     </div>
 
-    <div class="version-badge">version: Public-BETA</div>
+    <div class="version-badge">version: 1.0</div>
 
     <!-- Settings modal -->
     <div class="cfg-overlay" id="cfg-overlay" onclick="closeCfg()"></div>

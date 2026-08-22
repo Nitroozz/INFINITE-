@@ -64,6 +64,24 @@
             pointer-events: none;
             z-index: 2;
         }
+        .tech-grid::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 0, 0, 0.75) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.75) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0;
+            animation: grid-red-pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes grid-red-pulse {
+            0%, 30%, 100% { opacity: 0; filter: drop-shadow(0 0 0 rgba(255, 0, 0, 0)); }
+            42% { opacity: 0.45; filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.75)); }
+            52%, 82% { opacity: 1; filter: drop-shadow(0 0 8px rgba(255, 0, 0, 1)) drop-shadow(0 0 20px rgba(255, 0, 0, 0.7)); }
+            94% { opacity: 0.35; filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.6)); }
+        }
 
         .scanlines {
             position: fixed;
@@ -90,9 +108,9 @@
 
         .ascii-title {
             font-family: 'Space Mono', monospace;
-            font-size: clamp(0.35rem, 1.1vw, 0.55rem);
+            font-size: clamp(0.55rem, 1.8vw, 0.65rem);
             line-height: 1.25;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.09em;
             white-space: pre;
             background: linear-gradient(135deg, #ff1e3c 0%, #ff5570 100%);
             -webkit-background-clip: text;
@@ -360,7 +378,7 @@
 
             <form id="unlock-form" class="unlock-form">
                 <input class="unlock-input" type="password" id="unlock-password" placeholder="Enter code" aria-label="Access code" autocomplete="current-password" />
-                <button class="action-btn" type="submit" id="enterKeyBtn">[ Enter Access Code ]</button>
+                <button class="action-btn" type="submit" id="enterKeyBtn">[ BYPASS ]</button>
             </form>
 
             <div class="signature">Offline // Access Restricted</div>
