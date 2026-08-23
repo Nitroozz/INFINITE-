@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
 
     <script src="/scram/scramjet.all.js"></script>
     <script src="/baremux/index.js"></script>
@@ -227,19 +227,123 @@
         .divider { display:flex; align-items:center; gap:0.8rem; margin:1.4rem 0 1.2rem; color:rgba(253, 252, 253, 0.911); font-size:0.6rem; letter-spacing:0.2em; }
         .divider::before, .divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(180,0,255,0.4),rgba(255,0,80,0.3),transparent); }
 
-        /* ── Search bar ── */
-        #sj-form { display:flex; width:100%; margin-top:0.4rem; }
-        .search-prefix { display:flex; align-items:center; padding:0 0.75rem; background:rgba(0,0,0,0.5); border:1px solid rgba(150,0,255,0.25); border-right:none; border-radius:3px 0 0 3px; color:rgba(180,0,255,0.6); font-family:'Space Mono',monospace; font-size:0.8rem; user-select:none; }
-        #sj-address { flex:1; padding:0.7em 0.9em; border:1px solid rgba(252, 0, 0, 0.377); border-left:none; border-right:none; background:rgba(0,0,0,0.45); color:#e0d0ff; font-size:0.82rem; font-family:'Space Mono',monospace; outline:none; transition:border-color 0.2s,box-shadow 0.2s; caret-color:rgba(187, 127, 204, 0.9); }
-        #sj-address::placeholder { color:rgba(180,100,255,0.25); }
-        #sj-address:focus { border-color:rgba(200,0,255,0.55); box-shadow:0 0 0 3px rgba(150,0,255,0.1),inset 0 0 20px rgba(100,0,200,0.06); }
-        #sj-form button { padding:0.7em 1.1em; background:rgba(120,0,220,0.2); border:1px solid rgba(150,0,255,0.25); border-left:none; border-radius:0 3px 3px 0; color:rgba(200,100,255,0.7); font-size:0.9rem; font-family:'Space Mono',monospace; cursor:pointer; transition:all 0.2s; }
-        #sj-form button:hover { background:rgba(160,0,255,0.35); color:#fff; border-color:rgba(200,0,255,0.6); }
+        /* ── Pixel Art Search Bar ── */
+        #sj-form { 
+            display: flex; 
+            align-items: center;
+            width: 100%; 
+            max-width: 580px;
+            margin: 1.5rem auto 0; 
+            padding: 4px;
+            background: #18092c; /* Outer dark pixel frame */
+            border: 3px solid #0d041a; /* Darkest outer pixel edge */
+            border-radius: 30px; /* Capsule shape */
+            box-shadow: 
+                inset 0 0 0 2px #481b7a, /* Mid-tone inner bevel */
+                0 4px 0 #090212; /* Pixel bottom shadow */
+            image-rendering: pixelated;
+        }
 
-        /* ── Status line ── */
-        .status-line { display:flex; align-items:center; gap:0.5rem; margin-top:1rem; font-size:0.6rem; color:rgba(253, 253, 253, 0.884); letter-spacing:0.12em; justify-content:center; }
-        .status-dot { width:5px; height:5px; border-radius:50%; background:rgba(100,255,150,0.7); box-shadow:0 0 6px rgba(100,255,150,0.5); animation:pulse 2.5s ease-in-out infinite; }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .search-prefix { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            padding: 0 0.8rem 0 1rem; 
+            background: transparent; 
+            border: none;
+            color: #ffd700; 
+            font-family: 'Press Start 2P', 'Courier New', monospace; 
+            font-size: 0.85rem; 
+            user-select: none; 
+        }
+
+        #sj-address { 
+            flex: 1; 
+            height: 38px;
+            padding: 0 0.8em; 
+            border: none;
+            background: #a82ee6; /* Vibrant pixel-purple core fill */
+            border-radius: 18px; /* Inner pill wrap */
+            box-shadow: 
+                inset 0 3px 0 #7b1db0, /* Upper inner shadow */
+                inset 0 -3px 0 #c252f3; /* Lower inner highlight */
+            color: #ffffff; 
+            font-size: 0.65rem; 
+            font-family: 'Press Start 2P', 'Courier New', monospace; 
+            outline: none; 
+            caret-color: #ffffff; 
+        }
+
+        #sj-address::placeholder { 
+            color: #d88aff; 
+        }
+
+        #sj-address:focus { 
+            background: #b53bf2;
+        }
+
+        #sj-form button { 
+            padding: 0 1.2em; 
+            height: 38px;
+            margin-left: 4px;
+            background: #2a0e4e; 
+            border: 2px solid #5a1d96; 
+            border-radius: 18px; 
+            color: #e3a3ff; 
+            font-size: 0.65rem; 
+            font-family: 'Press Start 2P', 'Courier New', monospace; 
+            cursor: pointer; 
+            transition: background 0.1s ease;
+        }
+
+        #sj-form button:hover { 
+            background: #411677; 
+            color: #ffffff;
+            border-color: #8b3cdb;
+        }
+
+        #sj-form button:active {
+            transform: translateY(2px);
+        }
+
+        /* ── Pixel Art Fallback & Ultraviolet Button ── */
+        .fallback-container {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .fallback-text {
+            font-size: 0.55rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #8f62b3;
+            margin-bottom: 0.8rem;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+        }
+
+        #uv-fallback-btn {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            font-size: 0.6rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            background: #20083b;
+            border: 2px solid #5d1f99;
+            color: #cb71f8;
+            box-shadow: 0 4px 0 #0d041a;
+            transition: all 0.1s step-end;
+        }
+
+        #uv-fallback-btn:hover {
+            background: #391163;
+            color: #ffffff;
+            border-color: #a82ee6;
+        }
+
+        #uv-fallback-btn:active {
+            box-shadow: 0 0 0 #0d041a;
+            transform: translateY(4px);
+        }
 
         /* ── Version ── */
         .version-badge {
@@ -512,7 +616,7 @@
 ▒██▒▓██  ▀█ ██▒████ ░▒██▒▓██  ▀█ ██▒▒██▒▒ ▓██░ ▒░▒███
 ░██░▓██▒  ▐▌██▒▓█▒  ░░██░▓██▒  ▐▌██▒░██░░ ▓██▓ ░ ▒▓█  ▄
 ░██░▒██░   ▓██░▒█░   ░██░▒██░   ▓██░░██░  ▒██▒ ░ ░▒████▒
-░▓  ░▒░   ▒ ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
+░▓  ░▒░   ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
             <div class="credit">developed by <span> <span>--  Nitro / A.S</span></div>
 
             <div class="divider">// YOU ARE SOLEY RESPONSIBLE FOR YOUR ACTIONS //<br>NOT ALL WEBSITES WILL WORK</div>
@@ -531,6 +635,13 @@
                 />
                 <button type="submit">GO</button>
             </form>
+
+            <div class="fallback-container">
+                <p class="fallback-text">// site not loading properly? //</p>
+                <button id="uv-fallback-btn" type="button">
+                    Try NODE B 
+                </button>
+            </div>
 
             <div class="version" style="margin-top: 1rem; color: rgba(255, 120, 160, 0.9); letter-spacing: 0.14em;">version: 1.0</div>
 
@@ -582,6 +693,8 @@
             <div class="pc purple">
                 <h3>Getting Started</h3>
                 Type any URL or search term above and press GO. Traffic is sent through the configured endpoint.
+            </div>
+        </div>
         <div class="sec">
             <div class="slabel">// tip</div>
             <div class="pc pink">
@@ -605,6 +718,14 @@
             <div class="pc red" style="color:rgb(248, 245, 245);">
                 You are solely responsible for your browsing activity. Educational purposes only. Use responsibly.
             </div>
+
+            <div class="sec">
+                <div class="slabel">// MUSIC</div>
+                <div class="pc red" style="color:rgb(248, 245, 245);">
+                Music from #Uppbeat (free for Creators!):
+              https://uppbeat.io/t/danijel-zambo/serenity
+              License code: IROMBLBHBPWP0WJK
+                </div>
         </div>
 
         <div class="socials">
@@ -616,6 +737,7 @@
                     <span class="social-handle">linktr.ee/Ashvir_</span>
                 </span>
             </a>
+            
             <a class="social-link instagram" href="https://www.instagram.com/ashvir.singh_/" target="_blank" rel="noopener">
                 <span class="social-icon">📸</span>
                 <span class="social-text">
@@ -779,5 +901,31 @@
                     container.appendChild(p);
                 }
             }
+
+            // ── Ultraviolet Fallback Handler ──
+            var uvBtn = document.getElementById('uv-fallback-btn');
+            var searchInput = document.getElementById('sj-address');
+
+            if (uvBtn) {
+                uvBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var query = searchInput ? searchInput.value.trim() : '';
+
+                    if (query && !query.startsWith('http://') && !query.startsWith('https://')) {
+                        query = 'https://' + query;
+                    }
+
+                    var uvPort = '4000';
+                    var uvTarget = location.protocol + '//' + location.hostname + ':' + uvPort;
+
+                    if (query) {
+                        window.location.href = uvTarget + '/?url=' + encodeURIComponent(query);
+                    } else {
+                        window.location.href = uvTarget;
+                    }
+                });
+            }
         });
     </script>
+</body>
+</html>
