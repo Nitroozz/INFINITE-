@@ -642,7 +642,10 @@
                     Try NODE B 
                 </button>
             </div>
-
+            <div class="divider">
+              <p>Be sure the search bar is empty before clicking NODE-B</p>
+            </div>
+                
             <div class="version" style="margin-top: 1rem; color: rgba(255, 120, 160, 0.9); letter-spacing: 0.14em;">version: 1.0</div>
 
             <div class="error-wrap">
@@ -752,6 +755,19 @@
         var STORE_KEY = 'settings';
         function loadStore() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch(e) { return {}; } }
         function saveStore(obj) { localStorage.setItem(STORE_KEY, JSON.stringify(obj)); }
+
+        // Ultraviolet standard XOR encoder
+        function xorEncode(str) {
+            if (!str) return str;
+            return encodeURIComponent(
+                str
+                    .split('')
+                    .map(function(char, ind) {
+                        return ind % 2 ? String.fromCharCode(char.charCodeAt(0) ^ 2) : char;
+                    })
+                    .join('')
+            );
+        }
 
         // ── Settings modal ──
         function openCfg() {
@@ -919,7 +935,7 @@
                     var uvTarget = location.protocol + '//' + location.hostname + ':' + uvPort;
 
                     if (query) {
-                        window.location.href = uvTarget + '/?url=' + encodeURIComponent(query);
+                        window.location.href = uvTarget + '/uv/service/' + xorEncode(query);
                     } else {
                         window.location.href = uvTarget;
                     }
