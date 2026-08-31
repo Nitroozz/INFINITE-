@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------
 <!doctype html>
 <html lang="en">
 <head>
@@ -507,6 +508,11 @@
             position: relative; overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .social-link.discord {
+            background: linear-gradient(115deg, rgba(88,101,242,0.12), rgba(88,101,242,0.06));
+            border: 1px solid rgba(88,101,242,0.25);
+            color: rgba(140,155,255,0.85);
+        }
         .social-link.linktree {
             background: linear-gradient(115deg, rgba(0,180,80,0.12), rgba(0,255,120,0.06));
             border: 1px solid rgba(0,200,80,0.25);
@@ -523,6 +529,7 @@
             transform:translateX(-100%); transition:transform 0.5s ease;
         }
         .social-link:hover::before { transform:translateX(100%); }
+        .social-link.discord:hover   { transform:translateY(-1px); box-shadow:0 4px 20px rgba(88,101,242,0.2); border-color:rgba(88,101,242,0.6); }
         .social-link.linktree:hover  { transform:translateY(-1px); box-shadow:0 4px 20px rgba(0,200,80,0.15); border-color:rgba(0,220,90,0.5); }
         .social-link.instagram:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(220,0,120,0.15); border-color:rgba(255,60,140,0.5); }
 
@@ -530,6 +537,31 @@
         .social-text { display:flex; flex-direction:column; gap:0.1rem; }
         .social-name { font-size:0.62rem; opacity:0.55; letter-spacing:0.12em; text-transform:uppercase; }
         .social-handle { font-size:0.75rem; font-weight:700; }
+
+        .socials-row {
+            position: fixed;
+            left: 0; right: 0; bottom: 1rem;
+            z-index: 50;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding: 0 1rem;
+            pointer-events: none;
+        }
+        .socials-row .social-link {
+            pointer-events: all;
+            padding: 0.55rem 0.9rem;
+            margin-bottom: 0;
+            border-radius: 3px;
+            font-size: 0.68rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        @media (max-width: 700px) {
+            .socials-row .social-name { display: none; }
+        }
 
         .audio-cluster {
             position: fixed;
@@ -657,7 +689,29 @@
         <!-- Controls -->
         <button type="button" class="gear-btn" onclick="openCfg()" title="Settings">⚙</button>
         <button type="button" class="corner-btn about-btn" onclick="openPanel()">⚡ about</button>
-        <a class="corner-btn discord-btn" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">◈ discord</a>
+        <div class="socials-row">
+            <a class="social-link discord" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">
+                <span class="social-icon">◈</span>
+                <span class="social-text">
+                    <span class="social-name">Discord</span>
+                    <span class="social-handle">Join the server</span>
+                </span>
+            </a>
+            <a class="social-link linktree" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">
+                <span class="social-icon">🌿</span>
+                <span class="social-text">
+                    <span class="social-name">Linktree</span>
+                    <span class="social-handle">linktr.ee/Ashvir_</span>
+                </span>
+            </a>
+            <a class="social-link instagram" href="https://www.instagram.com/ashvir.singh_/" target="_blank" rel="noopener">
+                <span class="social-icon">📸</span>
+                <span class="social-text">
+                    <span class="social-name">Instagram</span>
+                    <span class="social-handle">@ashvir.singh_</span>
+                </span>
+            </a>
+        </div>
     </div>
 
     <div class="version-badge">version: 1.0</div>
@@ -945,3 +999,5 @@
     </script>
 </body>
 </html>
+
+--------------------------------------------------------------------------------
