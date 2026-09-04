@@ -51,6 +51,22 @@
             position: absolute;
             width: 100%;
         }
+        /* ── JOSE PIC ── */
+         .guy-textbox {
+            position: absolute;
+            bottom: -1.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 20, 4, 0.75);
+            border: 1px solid rgba(0, 255, 70, 0.35);
+            color: #4dff6e;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0;
+            white-space: nowrap;
+         }
+
 
         /* ── Floating particles ── */
 		.particles {
@@ -162,10 +178,10 @@
             width: 100%;
             height: auto;
         }
-        .speaker-a { bottom: 7%; left: calc(50% - 118px); animation-delay: -0.4s; }
-        .speaker-b { bottom: 6.5rem; left: 1.5rem; animation-delay: -1.2s; }
-        .speaker-c { bottom: 7%; left: calc(50% + 12px); animation-delay: -2.1s; }
-        .speaker-d { bottom: 7%; right: 7%; animation-delay: -3.3s; }
+        .speaker-a { bottom: 1.9rem; left: calc(12% - 118px); animation-delay: -0.4s; }
+        .speaker-b { bottom: 25.1rem; left: 90.0rem; animation-delay: -1.2s; }
+        .speaker-c { bottom: 25.1rem; left: calc(25% + 12px); animation-delay: -2.1s; }
+        .speaker-d { bottom: 7rem; right: 12%; animation-delay: -3.3s; }
         @keyframes speaker-float {
             0%, 100% { transform: translateY(0) rotate(-1deg); }
             50% { transform: translateY(-7px) rotate(1deg); }
@@ -198,10 +214,10 @@
             font-family: 'Space Mono', monospace;
             font-size: clamp(0.5rem, 1.5vw, 0.72rem);
             line-height: 1.35; letter-spacing: 0.04em; white-space: pre;
-            color: #4dff6e;
-            -webkit-text-fill-color: #4dff6e;
-            filter: drop-shadow(0 0 10px rgba(60,255,100,0.65)) drop-shadow(0 0 22px rgba(60,255,100,0.3));
-            animation: hshift 2.4s steps(1) infinite, glitch 7s infinite;
+            color: #def0e1;
+            -webkit-text-fill-color: #eef5f0;
+            filter: drop-shadow(0 0 10px rgba(192, 160, 178, 0.473)) drop-shadow(0 0 22px rgba(214, 214, 214, 0.493));
+            animation: hshift 2.4s steps(1) infinite, glitch 3s infinite;
             display: block; margin: 0 auto;
             position: relative;
         }
@@ -345,22 +361,22 @@
             right: 14px;
             bottom: 12px;
             z-index: 30;
-            font-family: 'Space Mono', monospace;
+            font-family: 'inherit', monospace;
             font-size: 0.66rem;
             line-height: 1;
             letter-spacing: 0.16em;
             text-transform: lowercase;
-            color: rgba(150, 255, 170, 0.55);
+            color: rgb(250, 253, 251);
             pointer-events: none;
             text-shadow: 0 0 4px rgba(0, 255, 60, 0.35);
         }
         .version {
             margin-top: 0.9rem;
-            font-size: 0.72rem;
+            font-size: 1.0rem;
             letter-spacing: 0.18em;
             text-transform: lowercase;
-            color: rgba(255, 176, 0, 0.75);
-            font-family: 'Space Mono', monospace;
+            color: rgb(255, 255, 255);
+            font-family: 'inherit', monospace;
             text-shadow: none;
         }
 
@@ -617,6 +633,7 @@
         <div class="gif-conversation" aria-hidden="true">
             <div class="gif-speaker speaker-a">
                 <img src="gifs/baller-roblox.png" alt="" />
+                <div class="guy-textbox">@v8mjcr</div>
             </div>
             <div class="gif-speaker speaker-b">
                 <img src="gifs/helldivers-helldivers-2.webp" alt="" />
@@ -666,7 +683,7 @@
               <p>Be sure the search bar is empty before clicking NODE-B</p>
             </div>
                 
-            <div class="version" style="margin-top: 1rem; color: rgba(255, 120, 160, 0.9); letter-spacing: 0.14em;">version: 1.2</div>
+            <div class="version" style="margin-top: 1rem; color: rgba(245, 243, 243, 0.9); letter-spacing: 0.14em;">version: 1.2</div>
 
             <div class="error-wrap">
                 <p id="sj-error"></p>
