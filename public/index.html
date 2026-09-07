@@ -179,7 +179,7 @@
             height: auto;
         }
         .speaker-a { bottom: 1.9rem; left: calc(12% - 118px); animation-delay: -0.4s; }
-        .speaker-b { bottom: 25.1rem; left: 120.0rem; animation-delay: -1.2s; }
+        .speaker-b { bottom: 15rem; left: 65%; animation-delay: -1.2s; }
         .speaker-c { bottom: 25.1rem; left: calc(25% + 12px); animation-delay: -2.1s; }
         .speaker-d { bottom: 7rem; right: 12%; animation-delay: -3.3s; }
         @keyframes speaker-float {
@@ -565,8 +565,46 @@
             border-radius: 0;
             font-size: 0.68rem;
         }
+
+        .social-help-callout {
+            position: fixed;
+            left: 50%;
+            bottom: 5.6rem;
+            z-index: 51;
+            transform: translateX(-50%);
+            padding: 0.45rem 0.75rem;
+            border: 1px solid rgba(255,176,0,0.55);
+            background: rgba(0,15,3,0.92);
+            color: rgba(255,205,110,0.95);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            animation: callout-float 2.2s ease-in-out infinite;
+        }
+
+        .social-help-callout::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -0.45rem;
+            width: 0.7rem;
+            height: 0.7rem;
+            border-right: 1px solid rgba(255,176,0,0.55);
+            border-bottom: 1px solid rgba(255,176,0,0.55);
+            background: rgba(0,15,3,0.92);
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        @keyframes callout-float {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -4px); }
+        }
+
         @media (max-width: 700px) {
             .socials-row .social-name { display: none; }
+            .social-help-callout { bottom: 6.2rem; }
         }
 
         .audio-cluster {
@@ -656,7 +694,7 @@
 ░▓  ░▒░   ▒ ▒ ░   ░▓  ░▒░   ▒ ▒ ░▓   ▒ ░░   ░  ░▒░  ░</pre>
             <div class="credit">developed by <span> <span>--  Nitro / A.S</span></div>
 
-            <div class="divider">// YOU ARE SOLEY RESPONSIBLE FOR YOUR ACTIONS //<br>NOT ALL WEBSITES WILL WORK</div>
+            <div class="divider">// YOU ARE SOLELY RESPONSIBLE FOR YOUR ACTIONS //<br>NOT ALL WEBSITES WILL WORK</div>
 
             <form id="sj-form">
                 <input id="sj-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden" />
@@ -694,6 +732,7 @@
         <!-- Controls -->
         <button type="button" class="gear-btn" onclick="openCfg()" title="Settings">⚙</button>
         <button type="button" class="corner-btn about-btn" onclick="openPanel()">⚡ about</button>
+        <div class="social-help-callout">Any issues? Ask here</div>
         <div class="socials-row">
             <a class="social-link discord" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">
                 <span class="social-icon">◈</span>
@@ -702,18 +741,18 @@
                     <span class="social-handle">Join the server</span>
                 </span>
             </a>
-            <a class="social-link linktree" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">
-                <span class="social-icon">🌿</span>
-                <span class="social-text">
-                    <span class="social-name">Linktree</span>
-                    <span class="social-handle">linktr.ee/Ashvir_</span>
-                </span>
-            </a>
             <a class="social-link instagram" href="https://www.instagram.com/ashvir.singh_/" target="_blank" rel="noopener">
                 <span class="social-icon">📸</span>
                 <span class="social-text">
                     <span class="social-name">Instagram</span>
                     <span class="social-handle">@ashvir.singh_</span>
+                </span>
+            </a>
+            <a class="social-link linktree" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">
+                <span class="social-icon">🌿</span>
+                <span class="social-text">
+                    <span class="social-name">Linktree</span>
+                    <span class="social-handle">linktr.ee/Ashvir_</span>
                 </span>
             </a>
         </div>
