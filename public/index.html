@@ -652,6 +652,51 @@
         .volume-slider::-webkit-slider-thumb {
             background: #4dff6e;
         }
+
+        .time-hud {
+            position: fixed;
+            top: 1rem;
+            left: 4.2rem;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 0.12rem;
+            min-width: 142px;
+            padding: 0.45rem 0.65rem;
+            border: 1px solid rgba(0, 255, 70, 0.5);
+            background: rgba(0, 15, 3, 0.88);
+            color: #d8ffd8;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.54rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(0, 255, 70, 0.14);
+        }
+
+        .time-hud-label {
+            color: #4dff6e;
+            font-size: 0.48rem;
+        }
+
+        .time-hud strong {
+            color: #ffffff;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .time-hud-date {
+            color: rgba(180, 255, 190, 0.72);
+            font-size: 0.48rem;
+            letter-spacing: 0.06em;
+        }
+
+        @media (max-width: 700px) {
+            .time-hud {
+                top: 4.1rem;
+                left: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -661,6 +706,11 @@
         <button id="musicToggle" type="button" aria-label="Toggle music">♫</button>
         <input class="volume-slider" id="volumeSlider" type="range" min="0" max="1" value="0.45" step="0.01" aria-label="Music volume" />
         <button id="muteToggle" type="button" aria-label="Mute music">Mute</button>
+    </div>
+    <div class="time-hud" aria-label="California local time">
+        <span class="time-hud-label">California / PT</span>
+        <strong id="california-time">--:--:--</strong>
+        <span class="time-hud-date" id="california-date">---</span>
     </div>
     <div id="home">
         <!-- Background elements -->
@@ -916,6 +966,32 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            var californiaTime = document.getElementById('california-time');
+            var californiaDate = document.getElementById('california-date');
+            if (californiaTime && californiaDate) {
+                var timeFormatter = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/Los_Angeles',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                var dateFormatter = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/Los_Angeles',
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                function updateCaliforniaClock() {
+                    var now = new Date();
+                    californiaTime.textContent = timeFormatter.format(now);
+                    californiaDate.textContent = dateFormatter.format(now);
+                }
+                updateCaliforniaClock();
+                setInterval(updateCaliforniaClock, 1000);
+            }
+
             // Transport button toggle
             document.querySelectorAll('.t-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
