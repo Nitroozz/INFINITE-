@@ -506,6 +506,11 @@
         /* ── Socials ── */
         .socials { margin-top:1.8rem; }
         .socials .slabel { margin-bottom:0.8rem; }
+        .linktree-qr-link { display:block; width:8rem; margin-bottom:0.8rem; }
+        .linktree-qr { display:block; width:100%; height:auto; border:1px solid rgba(255,176,0,0.35); }
+        .linktree-qr-corner { position:fixed; left:1rem; bottom:1rem; z-index:51; width:4.25rem; }
+        .linktree-qr-corner .linktree-qr { border-color:rgba(255,176,0,0.55); }
+        @media (max-width:700px) { .linktree-qr-corner { width:3.5rem; } }
 
         .social-link {
             display: flex; align-items: center; gap: 0.75rem;
@@ -526,11 +531,6 @@
             border: 1px solid rgba(255,176,0,0.3);
             color: rgba(255,205,110,0.85);
         }
-        .social-link.instagram {
-            background: rgba(0,255,70,0.05);
-            border: 1px solid rgba(0,255,80,0.3);
-            color: rgba(150,255,170,0.85);
-        }
         .social-link::before {
             content:''; position:absolute; inset:0;
             background:linear-gradient(105deg,transparent 35%,rgba(0,255,80,0.08) 50%,transparent 65%);
@@ -539,7 +539,6 @@
         .social-link:hover::before { transform:translateX(100%); }
         .social-link.discord:hover   { transform:translateY(-1px); box-shadow:0 4px 14px rgba(0,255,70,0.18); border-color:rgba(0,255,90,0.6); }
         .social-link.linktree:hover  { transform:translateY(-1px); box-shadow:0 4px 14px rgba(255,176,0,0.18); border-color:rgba(255,176,0,0.6); }
-        .social-link.instagram:hover { transform:translateY(-1px); box-shadow:0 4px 14px rgba(0,255,70,0.18); border-color:rgba(0,255,90,0.6); }
 
         .social-icon { font-size:1.1rem; flex-shrink:0; }
         .social-text { display:flex; flex-direction:column; gap:0.1rem; }
@@ -782,6 +781,9 @@
         <!-- Controls -->
         <button type="button" class="gear-btn" onclick="openCfg()" title="Settings">⚙</button>
         <button type="button" class="corner-btn about-btn" onclick="openPanel()">⚡ about</button>
+        <a class="linktree-qr-corner" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener" aria-label="Open Ashvir's Linktree">
+            <img class="linktree-qr" src="gifs/Ashvir_.png" alt="Scan to open Ashvir's Linktree" />
+        </a>
         <div class="social-help-callout">Any issues? Ask here</div>
         <div class="socials-row">
             <a class="social-link discord" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">
@@ -789,13 +791,6 @@
                 <span class="social-text">
                     <span class="social-name">Discord</span>
                     <span class="social-handle">Join the server</span>
-                </span>
-            </a>
-            <a class="social-link instagram" href="https://www.instagram.com/ashvir.singh_/" target="_blank" rel="noopener">
-                <span class="social-icon">📸</span>
-                <span class="social-text">
-                    <span class="social-name">Instagram</span>
-                    <span class="social-handle">@ashvir.singh_</span>
                 </span>
             </a>
             <a class="social-link linktree" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">
@@ -881,6 +876,9 @@
 
         <div class="socials">
             <div class="slabel">// find me</div>
+            <a class="linktree-qr-link" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">
+                <img class="linktree-qr" src="gifs/Ashvir_.png" alt="Scan to open Ashvir's Linktree" loading="lazy" />
+            </a>
             <a class="social-link linktree" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">
                 <span class="social-icon">🌿</span>
                 <span class="social-text">
@@ -889,13 +887,6 @@
                 </span>
             </a>
             
-            <a class="social-link instagram" href="https://www.instagram.com/ashvir.singh_/" target="_blank" rel="noopener">
-                <span class="social-icon">📸</span>
-                <span class="social-text">
-                    <span class="social-name">Instagram</span>
-                    <span class="social-handle">@ashvir.singh_</span>
-                </span>
-            </a>
         </div>
     </div>
 
