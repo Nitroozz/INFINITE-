@@ -331,7 +331,8 @@
             font-family: 'Space Mono', monospace;
         }
 
-        #uv-fallback-btn {
+        #uv-fallback-btn,
+        #node-c-btn {
             font-family: 'Space Mono', monospace;
             font-size: 0.65rem;
             padding: 0.7rem 1.2rem;
@@ -344,13 +345,15 @@
             transition: all 0.1s step-end;
         }
 
-        #uv-fallback-btn:hover {
+        #uv-fallback-btn:hover,
+        #node-c-btn:hover {
             background: #0a4515;
             color: #ffffff;
             border-color: #6dff8e;
         }
 
-        #uv-fallback-btn:active {
+        #uv-fallback-btn:active,
+        #node-c-btn:active {
             box-shadow: none;
             transform: translateY(2px);
         }
@@ -763,11 +766,12 @@
             <div class="fallback-container">
                 <p class="fallback-text">// site not loading properly? //</p>
                 <button id="uv-fallback-btn" type="button">
-                    Try NODE B 
+                    Node B
                 </button>
+                <button id="node-c-btn" type="button">Node-C</button>
             </div>
             <div class="divider">
-              <p>Be sure the search bar is empty before clicking NODE-B</p>
+                <p>"The right man in the wrong place can make all the difference in the world. So, wake up, Mister Freeman. Wake up and... smell the ashes."-GMAN </p>
             </div>
                 
             <div class="version" style="margin-top: 1rem; color: rgba(245, 243, 243, 0.9); letter-spacing: 0.14em;">version: 1.2</div>
@@ -1085,25 +1089,19 @@
 
             // ── Ultraviolet Fallback Handler ──
             var uvBtn = document.getElementById('uv-fallback-btn');
-            var searchInput = document.getElementById('sj-address');
+            var nodeCBtn = document.getElementById('node-c-btn');
 
             if (uvBtn) {
                 uvBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    var query = searchInput ? searchInput.value.trim() : '';
+                    window.location.href = location.protocol + '//' + location.hostname + ':8443';
+                });
+            }
 
-                    if (query && !query.startsWith('http://') && !query.startsWith('https://')) {
-                        query = 'https://' + query;
-                    }
-
-                    var uvPort = '8443';
-                    var uvTarget = location.protocol + '//' + location.hostname + ':' + uvPort;
-
-                    if (query) {
-                        window.location.href = uvTarget + '/uv/service/' + xorEncode(query);
-                    } else {
-                        window.location.href = uvTarget;
-                    }
+            if (nodeCBtn) {
+                nodeCBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = location.protocol + '//' + location.hostname + ':10000';
                 });
             }
         });
