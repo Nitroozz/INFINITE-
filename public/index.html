@@ -411,112 +411,6 @@
         .about-btn   { bottom:2.5rem; right:1.5rem; }
         .discord-btn { bottom:2.5rem; left:1.5rem; }
 
-        .games-help-btn {
-            position: fixed;
-            right: 1.5rem;
-            bottom: 6.5rem;
-            z-index: 120;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.65rem 0.85rem;
-            color: #001a05;
-            background: #4dff6e;
-            border: 1px solid #9dffb0;
-            box-shadow: 0 0 10px rgba(0,255,70,0.45);
-            animation: games-help-float 3.2s ease-in-out infinite;
-            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
-        }
-        .games-help-btn:hover {
-            color: #ffffff;
-            background: #0a4515;
-            box-shadow: 0 0 18px rgba(0,255,70,0.7);
-            animation-play-state: paused;
-        }
-        @keyframes games-help-float {
-            0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-8px) rotate(1deg); }
-        }
-        @media (max-width: 700px) {
-            .games-help-btn {
-                right: 1rem;
-                bottom: 8.5rem;
-                font-size: 0.55rem;
-            }
-        }
-
-        .games-help-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 250;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: rgba(0,10,2,0.88);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-        .games-help-overlay.open { opacity: 1; pointer-events: all; }
-        .games-help-modal {
-            width: min(760px, 100%);
-            max-height: 92vh;
-            overflow-y: auto;
-            padding: 1.4rem;
-            background: rgba(0,15,3,0.98);
-            border: 1px solid rgba(0,255,70,0.5);
-            box-shadow: 0 0 30px rgba(0,255,70,0.16);
-            font-family: 'Space Mono', monospace;
-        }
-        .games-help-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .games-help-title {
-            color: #4dff6e;
-            font-size: 0.8rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-        .games-help-close {
-            padding: 0.25rem 0.5rem;
-            color: rgba(150,255,170,0.85);
-            background: transparent;
-            border: 1px solid rgba(0,255,70,0.35);
-            font: inherit;
-            cursor: pointer;
-        }
-        .games-help-modal p {
-            margin-bottom: 1rem;
-            color: rgba(210,255,215,0.8);
-            font-size: 0.65rem;
-            line-height: 1.7;
-        }
-        .games-help-gallery {
-            display: grid;
-            gap: 1rem;
-        }
-        .games-help-gallery figure { margin: 0; }
-        .games-help-gallery img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border: 1px solid rgba(0,255,70,0.3);
-        }
-        .games-help-gallery figcaption {
-            margin-top: 0.35rem;
-            color: rgba(150,255,170,0.6);
-            font-size: 0.55rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
         /* ── Settings gear ── */
         .gear-btn {
             position: fixed; top: 1rem; left: 1rem; z-index: 100;
@@ -911,30 +805,6 @@
 
     <div class="version-badge">version: 1.2</div>
 
-    <div class="games-help-overlay" id="games-help-overlay" onclick="closeGamesHelp(event)">
-        <div class="games-help-modal" role="dialog" aria-modal="true" aria-labelledby="games-help-title">
-            <div class="games-help-modal-header">
-                <div class="games-help-title" id="games-help-title">// game setup guide</div>
-                <button type="button" class="games-help-close" onclick="closeGamesHelp()">[x]</button>
-            </div>
-            <p>Open the game service on your phone, create an account with an email and password, link your game accounts, then use the steps below in Infinite.</p>
-            <div class="games-help-gallery">
-                <figure>
-                    <img src="games-help/step-1.png" alt="Game service account setup" />
-                    <figcaption>Step 1: Create your game service account</figcaption>
-                </figure>
-                <figure>
-                    <img src="games-help/step-2.png" alt="Infinite search bar with the game service website" />
-                    <figcaption>Step 2: Search play.geforcenow.com in Infinite</figcaption>
-                </figure>
-                <figure>
-                    <img src="games-help/step-3.png" alt="Game selection" />
-                    <figcaption>Step 3: Sign in and choose a game</figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
-
     <!-- Settings modal -->
     <div class="cfg-overlay" id="cfg-overlay" onclick="closeCfg()"></div>
     <div class="cfg-modal" id="cfg-modal">
@@ -1084,14 +954,6 @@
         function closePanel() {
             document.getElementById('panel').classList.remove('open');
             document.getElementById('overlay').classList.remove('open');
-        }
-        function openGamesHelp() {
-            document.getElementById('games-help-overlay').classList.add('open');
-        }
-        function closeGamesHelp(event) {
-            if (!event || event.target === document.getElementById('games-help-overlay')) {
-                document.getElementById('games-help-overlay').classList.remove('open');
-            }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
