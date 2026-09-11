@@ -411,6 +411,42 @@
         .about-btn   { bottom:2.5rem; right:1.5rem; }
         .discord-btn { bottom:2.5rem; left:1.5rem; }
 
+        .games-help-btn {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 6.5rem;
+            z-index: 120;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.65rem 0.85rem;
+            color: #001a05;
+            background: #4dff6e;
+            border: 1px solid #9dffb0;
+            box-shadow: 0 0 10px rgba(0,255,70,0.45);
+            animation: games-help-float 3.2s ease-in-out infinite;
+            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+        .games-help-btn:hover {
+            color: #ffffff;
+            background: #0a4515;
+            box-shadow: 0 0 18px rgba(0,255,70,0.7);
+            animation-play-state: paused;
+        }
+        @keyframes games-help-float {
+            0%, 100% { transform: translateY(0) rotate(-1deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+        @media (max-width: 700px) {
+            .games-help-btn {
+                right: 1rem;
+                bottom: 8.5rem;
+                font-size: 0.55rem;
+            }
+        }
+
         /* ── Settings gear ── */
         .gear-btn {
             position: fixed; top: 1rem; left: 1rem; z-index: 100;
@@ -781,6 +817,7 @@
         <!-- Controls -->
         <button type="button" class="gear-btn" onclick="openCfg()" title="Settings">⚙</button>
         <button type="button" class="corner-btn about-btn" onclick="openPanel()">⚡ about</button>
+        <a class="games-help-btn" href="https://docs.google.com/document/d/1Nw9ouD6rH73WQ7prYCCWUcjnb9UEKA45DobFOpfTbTc/edit?usp=sharing" target="_blank" rel="noopener">Need GAMES HELP?</a>
         <a class="linktree-qr-corner" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener" aria-label="Open Ashvir's Linktree">
             <img class="linktree-qr" src="gifs/Ashvir_.png" alt="Scan to open Ashvir's Linktree" />
         </a>
