@@ -169,7 +169,8 @@
             flex-direction: column;
             align-items: center;
             gap: 0.35rem;
-            width: clamp(82px, 10vw, 126px);
+            width: clamp(64px, 9vw, 118px);
+            max-height: 24vh;
             animation: speaker-float 5s ease-in-out infinite;
             filter: grayscale(0.3) sepia(0.2) hue-rotate(60deg) saturate(1.4);
         }
@@ -177,21 +178,24 @@
             display: block;
             width: 100%;
             height: auto;
+            max-height: 22vh;
+            object-fit: contain;
         }
-        .speaker-a { bottom: 1.9rem; left: calc(12% - 118px); animation-delay: -0.4s; }
-        .speaker-b { bottom: 15rem; left: 65%; animation-delay: -1.2s; }
-        .speaker-c { bottom: 25.1rem; left: calc(25% + 12px); animation-delay: -2.1s; }
-        .speaker-d { bottom: 7rem; right: 12%; animation-delay: -3.3s; }
+        .speaker-a { bottom: clamp(2rem, 6vh, 4rem); left: clamp(1rem, 3vw, 3rem); animation-delay: -0.4s; }
+        .speaker-b { top: clamp(5rem, 12vh, 8rem); right: clamp(1rem, 4vw, 4rem); animation-delay: -1.2s; }
+        .speaker-c { top: clamp(9rem, 22vh, 14rem); left: clamp(1rem, 3vw, 3rem); animation-delay: -2.1s; }
+        .speaker-d { bottom: clamp(3rem, 10vh, 7rem); right: clamp(1rem, 4vw, 4rem); animation-delay: -3.3s; }
         @keyframes speaker-float {
             0%, 100% { transform: translateY(0) rotate(-1deg); }
             50% { transform: translateY(-7px) rotate(1deg); }
         }
         @media (max-width: 700px) {
-            .gif-speaker { width: 58px; }
-            .speaker-a { bottom: 5.0rem; left: calc(50% - 64px); }
-            .speaker-b { bottom: 5.8rem; left: 1rem; }
-            .speaker-c { bottom: 5.0rem; left: calc(50% + 6px); }
-            .speaker-d { bottom: 5.0rem; right: 1rem; }
+            .gif-speaker { width: clamp(46px, 13vw, 72px); max-height: 16vh; }
+            .gif-speaker img { max-height: 14vh; }
+            .speaker-a { bottom: clamp(4.5rem, 10vh, 6.5rem); left: 2vw; }
+            .speaker-b { top: clamp(4.5rem, 12vh, 7rem); right: 2vw; }
+            .speaker-c { top: clamp(8rem, 22vh, 11rem); left: 2vw; right: auto; }
+            .speaker-d { bottom: clamp(4.5rem, 10vh, 6.5rem); right: 2vw; }
         }
 
         /* ── Glass card ── */
@@ -346,14 +350,16 @@
         }
 
         #uv-fallback-btn:hover,
-        #node-c-btn:hover {
+        #node-c-btn:hover,
+        .how-to-btn:hover {
             background: #0a4515;
             color: #ffffff;
             border-color: #6dff8e;
         }
 
         #uv-fallback-btn:active,
-        #node-c-btn:active {
+        #node-c-btn:active,
+        .how-to-btn:active {
             box-shadow: none;
             transform: translateY(2px);
         }
@@ -412,6 +418,7 @@
         .corner-btn:hover { color:#eafff0; background:rgba(0,60,15,0.4); animation:none; box-shadow:0 0 14px rgba(0,255,70,0.3); border-color:rgba(0,255,90,0.7); }
 
         .about-btn   { bottom:2.5rem; right:1.5rem; }
+        .how-to-btn  { bottom:2.5rem; right:8.7rem; }
         .discord-btn { bottom:2.5rem; left:1.5rem; }
 
         /* ── Settings gear ── */
@@ -774,7 +781,7 @@
                 <p>"The right man in the wrong place can make all the difference in the world. So, wake up, Mister Freeman. Wake up and... smell the ashes."-GMAN </p>
             </div>
                 
-            <div class="version" style="margin-top: 1rem; color: rgba(245, 243, 243, 0.9); letter-spacing: 0.14em;">version: 1.2</div>
+            <div class="version" style="margin-top: 1rem; color: rgba(245, 243, 243, 0.9); letter-spacing: 0.14em;">version: 1.2.1</div>
 
             <div class="error-wrap">
                 <p id="sj-error"></p>
@@ -785,6 +792,7 @@
         <!-- Controls -->
         <button type="button" class="gear-btn" onclick="openCfg()" title="Settings">⚙</button>
         <button type="button" class="corner-btn about-btn" onclick="openPanel()">⚡ about</button>
+        <a class="corner-btn how-to-btn" href="HOW%20TO.html">HOW TO</a>
         <a class="linktree-qr-corner" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener" aria-label="Open Ashvir's Linktree">
             <img class="linktree-qr" src="gifs/Ashvir_.png" alt="Scan to open Ashvir's Linktree" />
         </a>
@@ -807,7 +815,7 @@
         </div>
     </div>
 
-    <div class="version-badge">version: 1.2</div>
+    <div class="version-badge">version: 1.2.1</div>
 
     <!-- Settings modal -->
     <div class="cfg-overlay" id="cfg-overlay" onclick="closeCfg()"></div>
