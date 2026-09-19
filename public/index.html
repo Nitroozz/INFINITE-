@@ -2122,6 +2122,8 @@
     <div class="corner-mark br" aria-hidden="true"></div>
 
     <audio id="homeAudio" loop preload="auto" src="/music.mp3"></audio>
+    <audio id="voidAudio" preload="auto" src="/void.mp3"></audio>
+    <audio id="voidAudio2" preload="auto" src="/void2.mp3"></audio>
     <div class="audio-cluster">
         <button id="musicToggle" type="button" aria-label="Toggle music">♫</button>
         <input class="volume-slider" id="volumeSlider" type="range" min="0" max="1" value="0.45" step="0.01" aria-label="Music volume" />
@@ -2553,6 +2555,7 @@
             var chaosActive = false;
             var particleInterval = null;
             var glitchInterval = null;
+            var voidAudio2Timer = null;
 
             var COLORS = ['#fff', '#c44dff', '#ff7ae6', '#00ffcc', '#ff00aa', '#9b3dff', '#e0a0ff'];
             var GLITCH_CHARS = '█▓▒░╳◈◇◆※01∞ΔΩ'.split('');
@@ -2661,6 +2664,26 @@
                 document.body.classList.add('null-room');
                 if (nullRoom) nullRoom.classList.add('open');
 
+                var voidAudio = document.getElementById('voidAudio');
+                var voidAudio2 = document.getElementById('voidAudio2');
+                if (voidAudio) {
+                    voidAudio.loop = false;
+                    voidAudio.currentTime = 0;
+                    voidAudio.play().catch(function() {});
+                }
+                if (voidAudio2Timer) {
+                    clearTimeout(voidAudio2Timer);
+                    voidAudio2Timer = null;
+                }
+                voidAudio2Timer = setTimeout(function() {
+                    if (!chaosActive) return;
+                    if (voidAudio2) {
+                        voidAudio2.loop = false;
+                        voidAudio2.currentTime = 0;
+                        voidAudio2.play().catch(function() {});
+                    }
+                }, 5000);
+
                 var flash = document.createElement('div');
                 flash.className = 'trigger-flash';
                 document.body.appendChild(flash);
@@ -2693,6 +2716,20 @@
                 if (!chaosActive) return;
                 if (document.body.classList.contains('null-room-exiting')) return;
                 chaosActive = false;
+                if (voidAudio2Timer) {
+                    clearTimeout(voidAudio2Timer);
+                    voidAudio2Timer = null;
+                }
+                var voidAudio = document.getElementById('voidAudio');
+                var voidAudio2 = document.getElementById('voidAudio2');
+                if (voidAudio) {
+                    voidAudio.pause();
+                    voidAudio.currentTime = 0;
+                }
+                if (voidAudio2) {
+                    voidAudio2.pause();
+                    voidAudio2.currentTime = 0;
+                }
                 stopChaosLoops();
 
                 document.body.classList.add('null-room-exiting');
