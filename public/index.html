@@ -1557,6 +1557,147 @@
         }
         body.null-room .chaos-layer { opacity: 1; }
 
+        /* Exit / collapse */
+        body.null-room-exiting .null-room-panel {
+            opacity: 0 !important;
+            transition: opacity 0.2s ease !important;
+            pointer-events: none !important;
+        }
+        body.null-room-exiting .black-hole {
+            animation: hole-collapse 1.15s cubic-bezier(0.4, 0, 0.9, 0.2) forwards !important;
+            transition: none !important;
+        }
+        body.null-room-exiting .accretion {
+            animation: accretion-die 0.7s ease forwards !important;
+        }
+        body.null-room-exiting .chaos-scan,
+        body.null-room-exiting .chaos-flash {
+            opacity: 0 !important;
+            transition: opacity 0.35s ease !important;
+        }
+        body.null-room-exiting .chaos-layer {
+            transition: opacity 0.9s ease 0.45s;
+        }
+        body.null-room-exiting.chaos-gone .chaos-layer {
+            opacity: 0;
+        }
+        /* Full-screen shockwave ring */
+        .collapse-shock {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 200, 255, 0.9);
+            box-shadow:
+                0 0 30px rgba(200, 100, 255, 0.8),
+                0 0 80px rgba(160, 40, 255, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            z-index: 97;
+            pointer-events: none;
+            animation: shockwave 0.95s cubic-bezier(0.15, 0.8, 0.2, 1) forwards;
+        }
+        @keyframes shockwave {
+            0%   { transform: scale(0.2); opacity: 1; border-width: 3px; }
+            60%  { opacity: 0.75; }
+            100% { transform: scale(55); opacity: 0; border-width: 1px; }
+        }
+        .collapse-flash {
+            position: fixed;
+            inset: 0;
+            z-index: 96;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                rgba(255, 220, 255, 0.85) 0%,
+                rgba(200, 80, 255, 0.35) 25%,
+                rgba(80, 0, 160, 0.12) 50%,
+                transparent 70%);
+            animation: collapse-flash 0.85s ease-out forwards;
+        }
+        @keyframes collapse-flash {
+            0%   { opacity: 0; }
+            18%  { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes hole-collapse {
+            0% {
+                width: min(42vw, 320px);
+                height: min(42vw, 320px);
+                opacity: 1;
+                filter: brightness(1) saturate(1);
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow:
+                    0 0 0 2px rgba(220,120,255,.6),
+                    0 0 50px 16px rgba(180,60,255,.55),
+                    0 0 110px 40px rgba(110,20,220,.4),
+                    inset 0 0 50px 12px rgba(0,0,0,.95);
+            }
+            22% {
+                width: min(52vw, 400px);
+                height: min(52vw, 400px);
+                opacity: 1;
+                filter: brightness(1.8) saturate(2);
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow:
+                    0 0 0 5px rgba(255,230,255,1),
+                    0 0 90px 40px rgba(255,120,240,.85),
+                    0 0 180px 80px rgba(200,60,255,.55),
+                    inset 0 0 30px 10px rgba(255,255,255,.25);
+            }
+            45% {
+                width: min(28vw, 200px);
+                height: min(28vw, 200px);
+                filter: brightness(2.4) saturate(2.2);
+                transform: translate(-50%, -50%) scale(0.9) rotate(15deg);
+            }
+            70% {
+                width: min(12vw, 90px);
+                height: min(12vw, 90px);
+                opacity: 0.9;
+                filter: brightness(3) saturate(2.5);
+                transform: translate(-50%, -50%) scale(0.5) rotate(40deg);
+                box-shadow:
+                    0 0 0 2px #fff,
+                    0 0 100px 50px rgba(255,150,255,.7),
+                    0 0 200px 100px rgba(180,40,255,.4),
+                    inset 0 0 20px 5px rgba(255,255,255,.5);
+            }
+            100% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                filter: brightness(4);
+                transform: translate(-50%, -50%) scale(0) rotate(90deg);
+                box-shadow:
+                    0 0 0 0 transparent,
+                    0 0 150px 100px rgba(220,120,255,.25),
+                    0 0 250px 140px rgba(160,40,255,.1),
+                    inset 0 0 0 0 transparent;
+            }
+        }
+        @keyframes accretion-die {
+            0%   { opacity: 1; }
+            100% { opacity: 0; transform: translate(-50%, -50%) rotateX(68deg) scale(0.2); }
+        }
+        body.null-room-exiting .glass,
+        body.null-room-exiting .main-socials,
+        body.null-room-exiting .gear-btn,
+        body.null-room-exiting .time-hud,
+        body.null-room-exiting .audio-cluster,
+        body.null-room-exiting .corner-btn,
+        body.null-room-exiting .version-badge,
+        body.null-room-exiting .linktree-qr-corner,
+        body.null-room-exiting .gif-speaker,
+        body.null-room-exiting .cube,
+        body.null-room-exiting .blob,
+        body.null-room-exiting .tech-grid,
+        body.null-room-exiting .depth-field,
+        body.null-room-exiting .ascii-title {
+            animation: none !important;
+        }
+
         .black-hole {
             position: absolute;
             left: 50%;
@@ -1588,7 +1729,7 @@
             animation: hole-pulse 2.4s ease-in-out infinite alternate;
         }
         @keyframes hole-pulse {
-            from { box-shadow: 0 0 0 2px rgba(180,80,255,.35), 0 0 40px 10px rgba(140,40,255,.45), 0 0 90px 30px rgba(90,0,180,.3), inset 0 0 40px 8px rgba(0,0,0,.9); }
+            from { box-shadow: 0 0 0 2px rgb(247, 3, 3), 0 0 40px 10px rgba(140,40,255,.45), 0 0 90px 30px rgba(90,0,180,.3), inset 0 0 40px 8px rgba(0,0,0,.9); }
             to   { box-shadow: 0 0 0 3px rgba(220,120,255,.55), 0 0 70px 22px rgba(180,60,255,.55), 0 0 140px 50px rgba(110,20,220,.4), inset 0 0 55px 12px rgba(0,0,0,.95); }
         }
 
@@ -1783,32 +1924,36 @@
             position: fixed;
             inset: 0;
             z-index: 110;
-            display: grid;
-            place-items: center;
-            padding: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem 1.25rem 1.6rem;
             background: transparent;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease 1.8s;
+            transition: opacity 0.5s ease 1.4s;
         }
         .null-room-panel.open {
             opacity: 1;
+            pointer-events: none; /* hole stays visible / clickable around card */
+        }
+        .null-room-panel.open .null-room-content {
             pointer-events: auto;
         }
         .null-room-content {
             position: relative;
-            width: min(520px, 94vw);
-            padding: clamp(1.4rem, 4vw, 2.4rem);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            background: rgba(8, 4, 16, 0.92);
+            width: min(400px, 92vw);
+            padding: clamp(1rem, 3.2vw, 1.55rem);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(10, 5, 18, 0.68);
             color: #fff;
             box-shadow:
-                0 0 0 1px rgba(180, 80, 255, 0.4),
-                12px 12px 0 #9b3dff,
-                0 0 80px rgba(160, 40, 255, 0.45);
-            transform: scale(0.85) translateY(20px);
-            transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) 2s;
-            backdrop-filter: blur(6px);
+                0 0 0 1px rgba(180, 80, 255, 0.25),
+                7px 7px 0 rgba(155, 61, 255, 0.8),
+                0 0 40px rgba(140, 40, 255, 0.3);
+            transform: scale(0.92) translateY(18px);
+            transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) 1.5s;
+            backdrop-filter: blur(10px);
         }
         .null-room-panel.open .null-room-content {
             transform: scale(1) translateY(0);
@@ -2028,8 +2173,9 @@
                 <span>spacetime rift</span>
                 <span>timeline: collapse</span>
                 <span>exit: ESC</span>
+                <p class="null-room-message">Easter egg: You found a hidden feature! that littearly does nothing.( go follow me if you want to see more )</p>
             </div>
-            <button class="null-room-close" id="null-room-close" type="button">[ escape the event horizon ]</button>
+            <button class="null-room-close" id="null-room-close" type="button">[escape the event horizon ]</button>
         </div>
     </div>
 
@@ -2418,7 +2564,7 @@
             }
 
             function openNullRoom() {
-                if (chaosActive) return;
+                if (chaosActive || document.body.classList.contains('null-room-exiting')) return;
                 chaosActive = true;
                 document.body.classList.add('null-room');
                 if (nullRoom) nullRoom.classList.add('open');
@@ -2436,11 +2582,68 @@
 
             function closeNullRoom() {
                 if (!chaosActive) return;
+                if (document.body.classList.contains('null-room-exiting')) return;
                 chaosActive = false;
-                document.body.classList.remove('null-room');
-                if (nullRoom) nullRoom.classList.remove('open');
                 stopChaosLoops();
-                if (title) title.focus();
+
+                document.body.classList.add('null-room-exiting');
+                if (nullRoom) nullRoom.classList.remove('open');
+
+                // Shockwave + white/purple flash
+                var shock = document.createElement('div');
+                shock.className = 'collapse-shock';
+                document.body.appendChild(shock);
+                var flash = document.createElement('div');
+                flash.className = 'collapse-flash';
+                document.body.appendChild(flash);
+                setTimeout(function() { shock.remove(); flash.remove(); }, 1100);
+
+                // Extra exit particles
+                spawnParticles(28);
+                spawnGlitchChars(14);
+
+                var restoreSel = [
+                    '.glass', '.main-socials', '.gear-btn', '.time-hud',
+                    '.audio-cluster', '.corner-btn', '.version-badge',
+                    '.linktree-qr-corner', '.gif-speaker', '.cube', '.blob',
+                    '.tech-grid', '.depth-field', '.ascii-title', '.credit',
+                    '.divider', '.version', '.fallback-text'
+                ].join(',');
+
+                document.querySelectorAll(restoreSel).forEach(function(el) {
+                    el.style.animation = 'none';
+                    el.style.transition = 'none';
+                    el.style.opacity = '0';
+                    el.style.filter = 'blur(6px) brightness(1.4)';
+                    el.style.transform = '';
+                });
+
+                requestAnimationFrame(function() {
+                    document.querySelectorAll(restoreSel).forEach(function(el) {
+                        el.style.transition = 'opacity 0.85s ease, filter 0.85s ease, transform 0.85s cubic-bezier(0.16,1,0.3,1)';
+                        el.style.opacity = '1';
+                        el.style.filter = 'none';
+                    });
+                });
+
+                setTimeout(function() {
+                    document.body.classList.add('chaos-gone');
+                }, 500);
+
+                setTimeout(function() {
+                    document.body.classList.remove('null-room', 'null-room-exiting', 'chaos-gone');
+                    document.querySelectorAll(restoreSel).forEach(function(el) {
+                        el.style.animation = '';
+                        el.style.transition = '';
+                        el.style.opacity = '';
+                        el.style.filter = '';
+                        el.style.transform = '';
+                    });
+                    document.querySelectorAll('.chaos-particle, .glitch-char, .chaos-crack, .collapse-shock, .collapse-flash').forEach(function(el) {
+                        el.remove();
+                    });
+                    if (title) title.focus();
+                }, 1250);
             }
 
             if (title) {
