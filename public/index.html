@@ -1557,7 +1557,6 @@
         }
         body.null-room .chaos-layer { opacity: 1; }
 
-        /* Exit / collapse */
         body.null-room-exiting .null-room-panel {
             opacity: 0 !important;
             transition: opacity 0.2s ease !important;
@@ -1578,108 +1577,55 @@
         body.null-room-exiting .chaos-layer {
             transition: opacity 0.9s ease 0.45s;
         }
-        body.null-room-exiting.chaos-gone .chaos-layer {
-            opacity: 0;
-        }
-        /* Full-screen shockwave ring */
+        body.null-room-exiting.chaos-gone .chaos-layer { opacity: 0; }
         .collapse-shock {
             position: fixed;
-            left: 50%;
-            top: 50%;
-            width: 20px;
-            height: 20px;
+            left: 50%; top: 50%;
+            width: 20px; height: 20px;
             margin: -10px 0 0 -10px;
             border-radius: 50%;
             border: 2px solid rgba(255, 200, 255, 0.9);
-            box-shadow:
-                0 0 30px rgba(200, 100, 255, 0.8),
-                0 0 80px rgba(160, 40, 255, 0.5),
-                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(200,100,255,0.8), 0 0 80px rgba(160,40,255,0.5);
             z-index: 97;
             pointer-events: none;
             animation: shockwave 0.95s cubic-bezier(0.15, 0.8, 0.2, 1) forwards;
         }
         @keyframes shockwave {
-            0%   { transform: scale(0.2); opacity: 1; border-width: 3px; }
-            60%  { opacity: 0.75; }
-            100% { transform: scale(55); opacity: 0; border-width: 1px; }
+            0%   { transform: scale(0.2); opacity: 1; }
+            100% { transform: scale(55); opacity: 0; }
         }
         .collapse-flash {
-            position: fixed;
-            inset: 0;
-            z-index: 96;
-            pointer-events: none;
+            position: fixed; inset: 0; z-index: 96; pointer-events: none;
             background: radial-gradient(circle at center,
-                rgba(255, 220, 255, 0.85) 0%,
-                rgba(200, 80, 255, 0.35) 25%,
-                rgba(80, 0, 160, 0.12) 50%,
+                rgba(255,220,255,0.85) 0%,
+                rgba(200,80,255,0.35) 25%,
                 transparent 70%);
             animation: collapse-flash 0.85s ease-out forwards;
         }
         @keyframes collapse-flash {
-            0%   { opacity: 0; }
-            18%  { opacity: 1; }
-            100% { opacity: 0; }
+            0% { opacity: 0; } 18% { opacity: 1; } 100% { opacity: 0; }
         }
         @keyframes hole-collapse {
             0% {
-                width: min(42vw, 320px);
-                height: min(42vw, 320px);
-                opacity: 1;
-                filter: brightness(1) saturate(1);
-                transform: translate(-50%, -50%) scale(1);
-                box-shadow:
-                    0 0 0 2px rgba(220,120,255,.6),
-                    0 0 50px 16px rgba(180,60,255,.55),
-                    0 0 110px 40px rgba(110,20,220,.4),
-                    inset 0 0 50px 12px rgba(0,0,0,.95);
+                width: min(42vw, 320px); height: min(42vw, 320px); opacity: 1;
+                filter: brightness(1); transform: translate(-50%, -50%) scale(1);
             }
             22% {
-                width: min(52vw, 400px);
-                height: min(52vw, 400px);
-                opacity: 1;
-                filter: brightness(1.8) saturate(2);
-                transform: translate(-50%, -50%) scale(1.05);
-                box-shadow:
-                    0 0 0 5px rgba(255,230,255,1),
-                    0 0 90px 40px rgba(255,120,240,.85),
-                    0 0 180px 80px rgba(200,60,255,.55),
-                    inset 0 0 30px 10px rgba(255,255,255,.25);
+                width: min(52vw, 400px); height: min(52vw, 400px); opacity: 1;
+                filter: brightness(1.9) saturate(2); transform: translate(-50%, -50%) scale(1.08);
+                box-shadow: 0 0 0 5px #fff, 0 0 100px 50px rgba(255,120,240,.85), 0 0 180px 90px rgba(200,60,255,.5);
             }
-            45% {
-                width: min(28vw, 200px);
-                height: min(28vw, 200px);
-                filter: brightness(2.4) saturate(2.2);
-                transform: translate(-50%, -50%) scale(0.9) rotate(15deg);
-            }
-            70% {
-                width: min(12vw, 90px);
-                height: min(12vw, 90px);
-                opacity: 0.9;
-                filter: brightness(3) saturate(2.5);
-                transform: translate(-50%, -50%) scale(0.5) rotate(40deg);
-                box-shadow:
-                    0 0 0 2px #fff,
-                    0 0 100px 50px rgba(255,150,255,.7),
-                    0 0 200px 100px rgba(180,40,255,.4),
-                    inset 0 0 20px 5px rgba(255,255,255,.5);
+            55% {
+                width: min(18vw, 130px); height: min(18vw, 130px);
+                filter: brightness(2.8); transform: translate(-50%, -50%) scale(0.6) rotate(25deg);
             }
             100% {
-                width: 0;
-                height: 0;
-                opacity: 0;
-                filter: brightness(4);
+                width: 0; height: 0; opacity: 0; filter: brightness(4);
                 transform: translate(-50%, -50%) scale(0) rotate(90deg);
-                box-shadow:
-                    0 0 0 0 transparent,
-                    0 0 150px 100px rgba(220,120,255,.25),
-                    0 0 250px 140px rgba(160,40,255,.1),
-                    inset 0 0 0 0 transparent;
             }
         }
         @keyframes accretion-die {
-            0%   { opacity: 1; }
-            100% { opacity: 0; transform: translate(-50%, -50%) rotateX(68deg) scale(0.2); }
+            to { opacity: 0; transform: translate(-50%, -50%) rotateX(68deg) scale(0.2); }
         }
         body.null-room-exiting .glass,
         body.null-room-exiting .main-socials,
@@ -1859,6 +1805,99 @@
             to { transform: translate(20vw, 15vh) scale(0.1); opacity: 0; }
         }
 
+
+        /* Chaotic lightning cracks */
+        .chaos-crack {
+            position: fixed;
+            z-index: 94;
+            left: 50%;
+            top: 50%;
+            width: var(--len, 140px);
+            height: 2px;
+            background: linear-gradient(90deg,
+                rgba(255,255,255,0.95) 0%,
+                rgba(220,140,255,0.85) 30%,
+                rgba(255,80,200,0.4) 70%,
+                transparent 100%);
+            transform-origin: left center;
+            transform: rotate(var(--ang, 0deg)) scaleX(0);
+            box-shadow:
+                0 0 6px #fff,
+                0 0 14px rgba(200,100,255,0.9),
+                0 0 28px rgba(160,40,255,0.5);
+            pointer-events: none;
+            animation: crack-grow var(--dur, 0.7s) cubic-bezier(0.15, 0.85, 0.25, 1) forwards;
+            animation-delay: var(--delay, 0s);
+        }
+        .chaos-crack::before,
+        .chaos-crack::after {
+            content: "";
+            position: absolute;
+            left: var(--branch-at, 45%);
+            top: 0;
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+            transform-origin: left center;
+            box-shadow: 0 0 8px rgba(200,120,255,0.7);
+        }
+        .chaos-crack::before { transform: rotate(var(--branch1, 22deg)); }
+        .chaos-crack::after  { transform: rotate(var(--branch2, -18deg)); width: 28%; }
+        @keyframes crack-grow {
+            0%   { transform: rotate(var(--ang, 0deg)) scaleX(0); opacity: 0; }
+            12%  { opacity: 1; }
+            55%  { opacity: 1; filter: brightness(1.5); }
+            100% { transform: rotate(var(--ang, 0deg)) scaleX(1); opacity: 0; }
+        }
+        /* Extra jagged bolt variant */
+        .chaos-bolt {
+            position: fixed;
+            z-index: 95;
+            left: var(--x);
+            top: var(--y);
+            width: 3px;
+            height: var(--len, 80px);
+            background: linear-gradient(180deg,
+                transparent 0%,
+                #fff 15%,
+                #e0a0ff 50%,
+                #ff7ae6 80%,
+                transparent 100%);
+            box-shadow:
+                0 0 8px #fff,
+                0 0 18px rgba(200,80,255,0.9),
+                0 0 40px rgba(160,40,255,0.5);
+            pointer-events: none;
+            transform: rotate(var(--ang, 0deg)) scaleY(0);
+            transform-origin: top center;
+            animation: bolt-strike var(--dur, 0.45s) steps(3, end) forwards;
+            animation-delay: var(--delay, 0s);
+            opacity: 0;
+        }
+        @keyframes bolt-strike {
+            0%   { transform: rotate(var(--ang, 0deg)) scaleY(0); opacity: 0; }
+            20%  { transform: rotate(var(--ang, 0deg)) scaleY(1); opacity: 1; }
+            40%  { opacity: 0.3; }
+            55%  { opacity: 1; filter: brightness(2); }
+            100% { transform: rotate(var(--ang, 0deg)) scaleY(1.05); opacity: 0; }
+        }
+        .trigger-flash {
+            position: fixed;
+            inset: 0;
+            z-index: 93;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                rgba(255,255,255,0.55) 0%,
+                rgba(200,100,255,0.25) 30%,
+                transparent 65%);
+            animation: trigger-flash 0.55s ease-out forwards;
+        }
+        @keyframes trigger-flash {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
         .chaos-particle {
             position: fixed;
             z-index: 95;
@@ -1935,7 +1974,7 @@
         }
         .null-room-panel.open {
             opacity: 1;
-            pointer-events: none; /* hole stays visible / clickable around card */
+            pointer-events: none;
         }
         .null-room-panel.open .null-room-content {
             pointer-events: auto;
@@ -2544,23 +2583,58 @@
                 }
             }
 
+            function spawnCracks(count) {
+                for (var i = 0; i < count; i++) {
+                    var c = document.createElement('div');
+                    c.className = 'chaos-crack';
+                    c.style.setProperty('--ang', (Math.random() * 360) + 'deg');
+                    c.style.setProperty('--len', (90 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * 0.6) + 'px');
+                    c.style.setProperty('--dur', (0.45 + Math.random() * 0.9) + 's');
+                    c.style.setProperty('--delay', (Math.random() * 0.35) + 's');
+                    c.style.setProperty('--branch1', (12 + Math.random() * 40) + 'deg');
+                    c.style.setProperty('--branch2', (-(12 + Math.random() * 40)) + 'deg');
+                    c.style.setProperty('--branch-at', (30 + Math.random() * 40) + '%');
+                    document.body.appendChild(c);
+                    setTimeout(function(el) { el.remove(); }, 1800, c);
+                }
+            }
+
+            function spawnBolts(count) {
+                for (var i = 0; i < count; i++) {
+                    var b = document.createElement('div');
+                    b.className = 'chaos-bolt';
+                    b.style.setProperty('--x', (Math.random() * 100) + '%');
+                    b.style.setProperty('--y', (Math.random() * 100) + '%');
+                    b.style.setProperty('--len', (50 + Math.random() * 160) + 'px');
+                    b.style.setProperty('--ang', (Math.random() * 360) + 'deg');
+                    b.style.setProperty('--dur', (0.3 + Math.random() * 0.45) + 's');
+                    b.style.setProperty('--delay', (Math.random() * 0.4) + 's');
+                    document.body.appendChild(b);
+                    setTimeout(function(el) { el.remove(); }, 1200, b);
+                }
+            }
+
             function startChaosLoops() {
                 spawnParticles(40);
                 spawnGlitchChars(18);
+                spawnCracks(18);
+                spawnBolts(12);
                 particleInterval = setInterval(function() {
                     if (!chaosActive) return;
-                    spawnParticles(8 + Math.floor(Math.random() * 12));
-                }, 380);
+                    spawnParticles(8 + Math.floor(Math.random() * 14));
+                    if (Math.random() > 0.4) spawnCracks(2 + Math.floor(Math.random() * 5));
+                    if (Math.random() > 0.55) spawnBolts(1 + Math.floor(Math.random() * 4));
+                }, 340);
                 glitchInterval = setInterval(function() {
                     if (!chaosActive) return;
-                    spawnGlitchChars(4 + Math.floor(Math.random() * 8));
-                }, 520);
+                    spawnGlitchChars(4 + Math.floor(Math.random() * 10));
+                }, 480);
             }
 
             function stopChaosLoops() {
                 if (particleInterval) { clearInterval(particleInterval); particleInterval = null; }
                 if (glitchInterval) { clearInterval(glitchInterval); glitchInterval = null; }
-                document.querySelectorAll('.chaos-particle, .glitch-char').forEach(function(el) { el.remove(); });
+                document.querySelectorAll('.chaos-particle, .glitch-char, .chaos-crack, .chaos-bolt, .trigger-flash').forEach(function(el) { el.remove(); });
             }
 
             function openNullRoom() {
@@ -2568,13 +2642,31 @@
                 chaosActive = true;
                 document.body.classList.add('null-room');
                 if (nullRoom) nullRoom.classList.add('open');
+
+                // Initial chaotic lightning burst
+                var flash = document.createElement('div');
+                flash.className = 'trigger-flash';
+                document.body.appendChild(flash);
+                setTimeout(function() { flash.remove(); }, 600);
+
+                spawnCracks(22);
+                spawnBolts(16);
                 startChaosLoops();
+
                 setTimeout(function() {
                     if (chaosActive) {
                         spawnParticles(55);
                         spawnGlitchChars(25);
+                        spawnCracks(12);
+                        spawnBolts(10);
                     }
-                }, 900);
+                }, 700);
+                setTimeout(function() {
+                    if (chaosActive) {
+                        spawnCracks(10);
+                        spawnBolts(8);
+                    }
+                }, 1400);
                 if (nullRoomClose) {
                     setTimeout(function() { nullRoomClose.focus(); }, 2100);
                 }
@@ -2589,7 +2681,6 @@
                 document.body.classList.add('null-room-exiting');
                 if (nullRoom) nullRoom.classList.remove('open');
 
-                // Shockwave + white/purple flash
                 var shock = document.createElement('div');
                 shock.className = 'collapse-shock';
                 document.body.appendChild(shock);
@@ -2598,9 +2689,10 @@
                 document.body.appendChild(flash);
                 setTimeout(function() { shock.remove(); flash.remove(); }, 1100);
 
-                // Extra exit particles
-                spawnParticles(28);
-                spawnGlitchChars(14);
+                spawnParticles(24);
+                spawnGlitchChars(12);
+                spawnCracks(10);
+                spawnBolts(8);
 
                 var restoreSel = [
                     '.glass', '.main-socials', '.gear-btn', '.time-hud',
@@ -2626,9 +2718,7 @@
                     });
                 });
 
-                setTimeout(function() {
-                    document.body.classList.add('chaos-gone');
-                }, 500);
+                setTimeout(function() { document.body.classList.add('chaos-gone'); }, 500);
 
                 setTimeout(function() {
                     document.body.classList.remove('null-room', 'null-room-exiting', 'chaos-gone');
@@ -2639,7 +2729,7 @@
                         el.style.filter = '';
                         el.style.transform = '';
                     });
-                    document.querySelectorAll('.chaos-particle, .glitch-char, .chaos-crack, .collapse-shock, .collapse-flash').forEach(function(el) {
+                    document.querySelectorAll('.chaos-particle, .glitch-char, .chaos-crack, .chaos-bolt, .collapse-shock, .collapse-flash, .trigger-flash').forEach(function(el) {
                         el.remove();
                     });
                     if (title) title.focus();
