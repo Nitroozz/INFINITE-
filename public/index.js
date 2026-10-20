@@ -83,7 +83,12 @@ document.querySelectorAll(".launch-btn").forEach((gameLink) => {
 			nodeBUrl.search = new URLSearchParams({
 				url: gameLink.dataset.gameUrl,
 			}).toString();
-			window.location.assign(nodeBUrl);
+			const nodeBWindow = window.open(nodeBUrl.href, "_blank");
+			if (nodeBWindow) {
+				nodeBWindow.opener = null;
+			} else {
+				window.location.assign(nodeBUrl.href);
+			}
 			return;
 		}
 
