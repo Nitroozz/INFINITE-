@@ -589,31 +589,36 @@
         }
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.4rem;
+            grid-template-columns: minmax(0, 1fr);
         }
-        .game-link {
-            min-height: 2.8rem;
-            padding: 0.5rem;
+        .game-card {
+            padding: 0.85rem;
             border: 1px solid rgba(196, 77, 255, 0.32);
             background: rgba(45, 20, 70, 0.75);
             color: #f3eaff;
-            font: 400 0.58rem/1.4 'Space Mono', monospace;
-            text-align: left;
-            overflow-wrap: anywhere;
-            cursor: pointer;
         }
-        .game-link:hover,
-        .game-link:focus-visible {
-            border-color: #fff;
-            background: #6e2eb5;
+        .game-card h3 {
+            margin: 0 0 0.35rem;
+            font: 700 0.7rem/1.4 'Space Mono', monospace;
+        }
+        .game-card p {
+            margin: 0 0 0.75rem;
+            color: rgba(243, 234, 255, 0.72);
+            font: 400 0.58rem/1.5 'Space Mono', monospace;
+        }
+        .launch-btn {
+            display: inline-block;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid rgba(196, 77, 255, 0.7);
+            background: rgba(91, 35, 145, 0.65);
             color: #fff;
+            font: 700 0.62rem 'Space Mono', monospace;
+            text-decoration: none;
         }
-        .games-note {
-            margin: 0.65rem 0 0;
-            color: rgba(243, 234, 255, 0.68);
-            font-size: 0.52rem;
-            line-height: 1.6;
+        .launch-btn:hover,
+        .launch-btn:focus-visible {
+            background: #9b3dff;
+            color: #fff;
         }
 
         /* ── Fallback button ── */
@@ -2242,33 +2247,12 @@
                 </button>
                 <div id="games-panel" hidden>
                     <div class="games-grid">
-                        <button class="game-link" type="button" data-game-url="https://vel.gg/bo1z">BO1 Zombies</button>
-                        <button class="game-link" type="button" data-game-url="https://moon-zombies.pages.dev">Moon</button>
-                        <button class="game-link" type="button" data-game-url="https://kino-der-toten.pages.dev">Kino der Toten</button>
-                        <button class="game-link" type="button" data-game-url="https://cheese-cube.pages.dev">BO3 Cheese Cube</button>
-                        <button class="game-link" type="button" data-game-url="https://vibeslops.luckeysystems.com">Black Ops 2</button>
-                        <button class="game-link" type="button" data-game-url="https://ovz-game-production.up.railway.app">Modern Warfare 2</button>
-                        <button class="game-link" type="button" data-game-url="https://skate.aaddpp.lol">Skate 3</button>
-                        <button class="game-link" type="button" data-game-url="https://global-terror.net">Skate Rust</button>
-                        <button class="game-link" type="button" data-game-url="https://surfd.net">CS Surf</button>
-                        <button class="game-link" type="button" data-game-url="https://mitchellhynes.com/halo">Halo CE</button>
-                        <button class="game-link" type="button" data-game-url="https://hcemobile.com">Halo CE mobile</button>
-                        <button class="game-link" type="button" data-game-url="https://pes6.optijuegos.net">PES 6</button>
-                        <button class="game-link" type="button" data-game-url="https://web.archive.org/web/20261006055917/https://playgta5.com/">GTA 5</button>
-                        <button class="game-link" type="button" data-game-url="https://joncodeofficial.github.io/gta-vice-city-wasm">GTA Vice City</button>
-                        <button class="game-link" type="button" data-game-url="https://shar-wasm.cjoseph.workers.dev/?skipmovie">The Simpsons: Hit &amp; Run</button>
-                        <button class="game-link" type="button" data-game-url="https://q1.pieter.com">Quake 1</button>
-                        <button class="game-link" type="button" data-game-url="https://q2.pieter.com">Quake 2</button>
-                        <button class="game-link" type="button" data-game-url="https://q3.pieter.com">Quake 3</button>
-                        <button class="game-link" type="button" data-game-url="https://rtcw.pieter.com">Return to Castle Wolfenstein</button>
-                        <button class="game-link" type="button" data-game-url="https://ut.pieter.com">Unreal Tournament</button>
-                        <button class="game-link" type="button" data-game-url="https://pixelsuft.github.io/hl/">Half Life</button>
-                        <button class="game-link" type="button" data-game-url="https://x8bitrain.github.io/webXash/">Half Life / CS 1.6</button>
-                        <button class="game-link" type="button" data-game-url="https://johnimril.github.io/diablo_web/">Diablo</button>
-                        <button class="game-link" type="button" data-game-url="https://webwars.link">Hedgewars</button>
-                        <button class="game-link" type="button" data-game-url="https://wasmarcade.com/Fan">More GTA / Minecraft ports</button>
+                        <div class="game-card">
+                            <h3>Skate 3 (Web Port)</h3>
+                            <p>Powered by WebGPU - Runs locally in your browser.</p>
+                            <a href="https://skate.aaddpp.lol" class="launch-btn">Play Skate 3</a>
+                        </div>
                     </div>
-                    <p class="games-note">Some of these wont work properly.</p>
                 </div>
             </section>
 
@@ -2568,21 +2552,11 @@
 
             var gamesToggle = document.getElementById('games-toggle');
             var gamesPanel = document.getElementById('games-panel');
-            var gamesGrid = document.querySelector('.games-grid');
             if (gamesToggle && gamesPanel) {
                 gamesToggle.addEventListener('click', function() {
                     var expanded = gamesToggle.getAttribute('aria-expanded') === 'true';
                     gamesToggle.setAttribute('aria-expanded', String(!expanded));
                     gamesPanel.hidden = expanded;
-                });
-            }
-            if (gamesGrid && form) {
-                gamesGrid.addEventListener('click', function(e) {
-                    var gameButton = e.target.closest('.game-link');
-                    var address = document.getElementById('sj-address');
-                    if (!gameButton || !address) return;
-                    address.value = gameButton.getAttribute('data-game-url');
-                    form.requestSubmit();
                 });
             }
 

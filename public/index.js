@@ -62,3 +62,22 @@ form.addEventListener("submit", async (event) => {
 	document.body.appendChild(frame.frame);
 	frame.go(url);
 });
+
+const gameLink = document.querySelector(".launch-btn");
+if (gameLink) {
+	gameLink.addEventListener("click", (event) => {
+		if (
+			event.button !== 0 ||
+			event.metaKey ||
+			event.ctrlKey ||
+			event.shiftKey ||
+			event.altKey
+		) {
+			return;
+		}
+
+		event.preventDefault();
+		address.value = gameLink.href;
+		form.requestSubmit();
+	});
+}
