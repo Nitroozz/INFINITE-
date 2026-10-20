@@ -401,6 +401,33 @@
         .launch-btn.node-b-launch:hover {
             filter: brightness(1.12);
         }
+        .suggestion-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 0.8rem;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.62);
+        }
+        .suggestion-box h3 {
+            margin-bottom: 0.25rem;
+            color: var(--text);
+            font-size: 0.68rem;
+        }
+        .suggestion-box p {
+            color: var(--muted);
+            font-size: 0.55rem;
+            line-height: 1.5;
+        }
+        .suggestion-box .launch-btn {
+            flex-shrink: 0;
+        }
+        @media (max-width: 420px) {
+            .suggestion-box { align-items: flex-start; flex-direction: column; }
+        }
 
         /* Fallbacks */
         .fallback-container { margin-top: 1.2rem; }
@@ -1966,7 +1993,7 @@
                 <div id="games-panel" hidden>
                     <div class="games-grid">
                         <div class="game-card">
-                            <h3>Skate 3 (Web Port)</h3>
+                            <h3>Skate 3 (DISABLED)</h3>
                             <p>Powered by WebGPU - Runs locally in your browser.</p>
                             <a href="https://skate.aaddpp.lol" class="launch-btn">Play Skate 3</a>
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://skate.aaddpp.lol">Node B</button>
@@ -1990,13 +2017,13 @@
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://garticphone.com">Node B</button>
                         </div>
                         <div class="game-card">
-                            <h3>skribbl.io</h3>
+                            <h3>skribbl</h3>
                             <p>Draw a word and see if your friends can guess it.</p>
                             <a href="https://skribbl.io" class="launch-btn">Play skribbl.io</a>
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://skribbl.io">Node B</button>
                         </div>
                         <div class="game-card">
-                            <h3>GeForce NOW Cloud Gaming</h3>
+                            <h3>NVIDIA</h3>
                             <p>Stream supported PC games with NVIDIA GeForce NOW.</p>
                             <a href="https://play.geforcenow.com" class="launch-btn">Open GeForce NOW</a>
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://play.geforcenow.com">Node B</button>
@@ -2008,13 +2035,13 @@
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://deathbyai.gg">Node B</button>
                         </div>
                         <div class="game-card">
-                            <h3>Lostgamer</h3>
+                            <h3>Lost</h3>
                             <p>Explore locations and test your geography knowledge.</p>
                             <a href="https://old.lostgamer.io/" class="launch-btn">Play Lostgamer</a>
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://old.lostgamer.io/">Node B</button>
                         </div>
                         <div class="game-card">
-                            <h3>Coolmath Games</h3>
+                            <h3>Coolmath </h3>
                             <p>Browse puzzles, strategy games, and more.</p>
                             <a href="https://www.coolmathgames.com/" class="launch-btn">Browse Coolmath Games</a>
                             <button type="button" class="launch-btn node-b-launch" data-game-url="https://www.coolmathgames.com/">Node B</button>
@@ -2027,6 +2054,18 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            <section class="suggestion-box" aria-label="Game suggestions">
+                <div>
+                    <h3>Have a game suggestion?</h3>
+                    <p>Send a recommendation for the games list.</p>
+                </div>
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSefhXvPbx4ull0kNEqIcEcDnt0ARjP9Ts3Ehpp8iweR9CSaIQ/viewform?usp=publish-editor"
+                    class="launch-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >Suggest a game</a>
             </section>
 
             <div class="fallback-container">
