@@ -380,7 +380,10 @@
         }
         .launch-btn {
             display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 0.45rem 0.8rem;
+            border: 0;
             border-radius: 999px;
             background: var(--accent);
             color: #fff;
@@ -389,6 +392,14 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
+            cursor: pointer;
+        }
+        .launch-btn.node-b-launch {
+            margin-left: 0.35rem;
+            background: var(--accent-2);
+        }
+        .launch-btn.node-b-launch:hover {
+            filter: brightness(1.12);
         }
 
         /* Fallbacks */
@@ -1958,51 +1969,61 @@
                             <h3>Skate 3 (Web Port)</h3>
                             <p>Powered by WebGPU - Runs locally in your browser.</p>
                             <a href="https://skate.aaddpp.lol" class="launch-btn">Play Skate 3</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://skate.aaddpp.lol">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>GeoFS Flight Simulator</h3>
                             <p>Fly anywhere in this browser-based flight simulator. If it has trouble loading, try Node B.</p>
                             <a href="https://beta.geo-fs.com/geofs.php?a=22" class="launch-btn">Launch GeoFS</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://beta.geo-fs.com/geofs.php?a=22">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>Slow Roads</h3>
                             <p>A relaxed, endless browser driving game.</p>
                             <a href="https://slowroads.io" class="launch-btn">Drive Slow Roads</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://slowroads.io">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>Gartic Phone</h3>
                             <p>A multiplayer drawing and guessing party game.</p>
                             <a href="https://garticphone.com" class="launch-btn">Play Gartic Phone</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://garticphone.com">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>skribbl.io</h3>
                             <p>Draw a word and see if your friends can guess it.</p>
                             <a href="https://skribbl.io" class="launch-btn">Play skribbl.io</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://skribbl.io">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>GeForce NOW Cloud Gaming</h3>
                             <p>Stream supported PC games with NVIDIA GeForce NOW.</p>
                             <a href="https://play.geforcenow.com" class="launch-btn">Open GeForce NOW</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://play.geforcenow.com">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>Death by AI</h3>
                             <p>Try to survive the AI's absurd scenarios.</p>
                             <a href="https://deathbyai.gg" class="launch-btn">Play Death by AI</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://deathbyai.gg">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>Lostgamer</h3>
                             <p>Explore locations and test your geography knowledge.</p>
                             <a href="https://old.lostgamer.io/" class="launch-btn">Play Lostgamer</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://old.lostgamer.io/">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>Coolmath Games</h3>
                             <p>Browse puzzles, strategy games, and more.</p>
                             <a href="https://www.coolmathgames.com/" class="launch-btn">Browse Coolmath Games</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://www.coolmathgames.com/">Node B</button>
                         </div>
                         <div class="game-card">
                             <h3>Neal.fun</h3>
                             <p>A collection of interactive web experiments and mini-games.</p>
                             <a href="https://neal.fun" class="launch-btn">Explore Neal.fun</a>
+                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://neal.fun">Node B</button>
                         </div>
                     </div>
                 </div>

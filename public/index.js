@@ -76,6 +76,17 @@ document.querySelectorAll(".launch-btn").forEach((gameLink) => {
 		}
 
 		event.preventDefault();
+		if (gameLink.classList.contains("node-b-launch")) {
+			const nodeBUrl = new URL(window.location.href);
+			nodeBUrl.port = "8443";
+			nodeBUrl.pathname = "/";
+			nodeBUrl.search = new URLSearchParams({
+				url: gameLink.dataset.gameUrl,
+			}).toString();
+			window.location.assign(nodeBUrl);
+			return;
+		}
+
 		address.value = gameLink.href;
 		form.requestSubmit();
 	});
