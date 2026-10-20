@@ -353,7 +353,11 @@
             border-color: rgba(37, 99, 235, 0.35);
         }
         #games-panel { margin-top: 0.55rem; }
-        .games-grid { display: grid; gap: 0.55rem; }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.55rem;
+        }
         .game-card {
             padding: 0.9rem 1rem;
             border-radius: var(--radius-sm);
@@ -370,6 +374,9 @@
             color: var(--muted);
             margin-bottom: 0.65rem;
             line-height: 1.5;
+        }
+        @media (max-width: 560px) {
+            .games-grid { grid-template-columns: minmax(0, 1fr); }
         }
         .launch-btn {
             display: inline-flex;
@@ -1804,6 +1811,21 @@
             visibility: visible;
         }
 
+        #sj-frame {
+            position: fixed !important;
+            inset: 0 !important;
+            display: block !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: #fff;
+            z-index: 1000 !important;
+        }
+
         @media (max-width: 700px) {
             .home-joke-popup,
             .home-joke-popup.left {
@@ -1936,6 +1958,51 @@
                             <h3>Skate 3 (Web Port)</h3>
                             <p>Powered by WebGPU - Runs locally in your browser.</p>
                             <a href="https://skate.aaddpp.lol" class="launch-btn">Play Skate 3</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>GeoFS Flight Simulator</h3>
+                            <p>Fly anywhere in this browser-based flight simulator. If it has trouble loading, try Node B.</p>
+                            <a href="https://beta.geo-fs.com/geofs.php?a=22" class="launch-btn">Launch GeoFS</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>Slow Roads</h3>
+                            <p>A relaxed, endless browser driving game.</p>
+                            <a href="https://slowroads.io" class="launch-btn">Drive Slow Roads</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>Gartic Phone</h3>
+                            <p>A multiplayer drawing and guessing party game.</p>
+                            <a href="https://garticphone.com" class="launch-btn">Play Gartic Phone</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>skribbl.io</h3>
+                            <p>Draw a word and see if your friends can guess it.</p>
+                            <a href="https://skribbl.io" class="launch-btn">Play skribbl.io</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>GeForce NOW Cloud Gaming</h3>
+                            <p>Stream supported PC games with NVIDIA GeForce NOW.</p>
+                            <a href="https://play.geforcenow.com" class="launch-btn">Open GeForce NOW</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>Death by AI</h3>
+                            <p>Try to survive the AI's absurd scenarios.</p>
+                            <a href="https://deathbyai.gg" class="launch-btn">Play Death by AI</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>Lostgamer</h3>
+                            <p>Explore locations and test your geography knowledge.</p>
+                            <a href="https://old.lostgamer.io/" class="launch-btn">Play Lostgamer</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>Coolmath Games</h3>
+                            <p>Browse puzzles, strategy games, and more.</p>
+                            <a href="https://www.coolmathgames.com/" class="launch-btn">Browse Coolmath Games</a>
+                        </div>
+                        <div class="game-card">
+                            <h3>Neal.fun</h3>
+                            <p>A collection of interactive web experiments and mini-games.</p>
+                            <a href="https://neal.fun" class="launch-btn">Explore Neal.fun</a>
                         </div>
                     </div>
                 </div>

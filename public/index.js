@@ -63,8 +63,7 @@ form.addEventListener("submit", async (event) => {
 	frame.go(url);
 });
 
-const gameLink = document.querySelector(".launch-btn");
-if (gameLink) {
+document.querySelectorAll(".launch-btn").forEach((gameLink) => {
 	gameLink.addEventListener("click", (event) => {
 		if (
 			event.button !== 0 ||
@@ -80,4 +79,4 @@ if (gameLink) {
 		address.value = gameLink.href;
 		form.requestSubmit();
 	});
-}
+});
