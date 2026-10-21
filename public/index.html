@@ -117,72 +117,6 @@
             width: 100%;
         }
 
-        /* hide old brutalist layers / soften them into ambient */
-        .blob, .tech-grid, .depth-field, .cube-layer, .signal-lines, .corner-mark {
-            display: none !important;
-        }
-
-        /* GIF speakers — soft frames */
-        .gif-conversation {
-            display: none !important; /* declutter 1.3 light */
-            position: fixed;
-            inset: 0;
-            z-index: 4;
-            pointer-events: none;
-        }
-        .gif-speaker {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-            width: clamp(68px, 9.5vw, 120px);
-            max-height: 24vh;
-            animation: speaker-float 6s ease-in-out infinite;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.45));
-        }
-        .gif-speaker img {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-height: 22vh;
-            object-fit: contain;
-            border-radius: 14px;
-            border: 1px solid rgba(92, 225, 255, 0.22);
-            background: rgba(8, 12, 22, 0.5);
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 10px 30px rgba(0,0,0,0.35);
-        }
-        .guy-textbox {
-            position: absolute;
-            bottom: -1.15rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(10, 14, 24, 0.9);
-            border: 1px solid rgba(92, 225, 255, 0.35);
-            color: var(--accent);
-            font-size: 0.52rem;
-            padding: 0.18rem 0.5rem;
-            border-radius: 999px;
-            white-space: nowrap;
-            backdrop-filter: blur(8px);
-        }
-        .speaker-a { bottom: clamp(7.5rem, 15vh, 10rem); left: clamp(1rem, 3vw, 2.5rem); animation-delay: -0.4s; }
-        .speaker-b { top: clamp(5rem, 12vh, 7.5rem); right: clamp(1rem, 4vw, 3rem); animation-delay: -1.2s; }
-        .speaker-c { top: clamp(9rem, 22vh, 13rem); left: clamp(1rem, 3vw, 2.5rem); animation-delay: -2.1s; }
-        .speaker-d { bottom: clamp(7.5rem, 16vh, 11rem); right: clamp(1rem, 4vw, 3rem); animation-delay: -3.3s; }
-        @keyframes speaker-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        @media (max-width: 700px) {
-            .gif-speaker { width: clamp(48px, 13vw, 72px); max-height: 15vh; }
-            .gif-speaker img { max-height: 13vh; border-radius: 10px; }
-            .speaker-a { bottom: clamp(7rem, 14vh, 9rem); left: 2vw; }
-            .speaker-b { top: clamp(4.5rem, 11vh, 6.5rem); right: 2vw; }
-            .speaker-c { top: clamp(8rem, 20vh, 10rem); left: 2vw; }
-            .speaker-d { bottom: clamp(7rem, 14vh, 9rem); right: 2vw; }
-        }
-
         /* MAIN CARD — frosted glass */
         .glass {
             position: relative;
@@ -192,7 +126,7 @@
             padding: clamp(1.5rem, 4.5vw, 2.4rem);
             border-radius: var(--radius);
             background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(26, 29, 38, 0.08);
+            border: 1px solid rgba(0, 58, 231, 0.08);
             box-shadow:
                 var(--glow),
                 0 1px 0 rgba(255,255,255,0.9) inset;
@@ -201,9 +135,6 @@
             color: var(--text);
             transform: none;
         }
-        .glass::before,
-        .glass::after { display: none; }
-
         /* ASCII title */
         .ascii-title {
             font-family: var(--font);
@@ -211,8 +142,8 @@
             line-height: 1.22;
             letter-spacing: 0;
             white-space: pre;
-            color: #12151c;
-            -webkit-text-fill-color: #12151c;
+            color: #114cd6;
+            -webkit-text-fill-color: #000000;
             margin: 0 0 0.75rem;
             padding: 0.75rem 0.9rem;
             border: 1px solid var(--line);
@@ -284,7 +215,8 @@
             border: 1px solid var(--line);
             box-shadow: 0 1px 2px rgba(26, 29, 38, 0.04);
         }
-        .search-prefix {
+        .search-prefix,
+        .search-prompt-pill {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -296,7 +228,11 @@
             font-weight: 700;
             font-size: 0.8rem;
             user-select: none;
+            border: 0;
+            cursor: pointer;
+            font-family: var(--font);
         }
+        .search-prompt-pill:hover { background: var(--accent-2); }
         #sj-address {
             width: 100%;
             height: 40px;
@@ -376,25 +312,21 @@
         #sj-error-code { font-size: 0.6rem; color: rgba(255,122,173,0.55); margin-top: 0.15rem; }
         .hl { color: var(--accent); }
 
-        /* Version pill — top center */
+        /* Version chip (lives inside time-widget menu) */
         .version-badge {
-            position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 30;
-            padding: 0.42rem 0.95rem;
+            position: static;
+            transform: none;
+            padding: 0.35rem 0.7rem;
             border-radius: 999px;
-            background: #fff;
+            background: #f3f6ff;
             border: 1px solid var(--line);
             color: var(--accent);
             font-family: var(--font);
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             font-weight: 700;
-            letter-spacing: 0.16em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            box-shadow: 0 8px 24px rgba(26, 40, 80, 0.08);
-            backdrop-filter: blur(10px);
+            box-shadow: none;
             pointer-events: none;
             white-space: nowrap;
         }
@@ -427,8 +359,7 @@
             background: var(--accent);
             box-shadow: 0 8px 22px rgba(37, 99, 235, 0.2);
         }
-        .about-btn { bottom: 6.6rem; right: 1.2rem; }
-        .how-to-btn { bottom: 6.6rem; right: 8.8rem; }
+        .about-btn { position: static; }
 
         .gear-btn {
             position: fixed;
@@ -697,12 +628,6 @@
             }
         }
 
-        /* OLD socials-row hide if present */
-        .socials-row { display: none !important; }
-        .social-help-callout:not(.main-socials .social-help-callout) {
-            /* only main-socials callout should show */
-        }
-
         /* CENTERED SOCIAL DOCK */
         .main-socials {
             position: fixed;
@@ -717,24 +642,6 @@
             padding: 0 1rem;
             pointer-events: none;
         }
-        .main-socials .social-help-callout {
-            position: static;
-            display: none; /* declutter */
-            transform: none;
-            margin: 0;
-            padding: 0.35rem 0.75rem;
-            border-radius: 999px;
-            background: #fff;
-            border: 1px solid var(--line);
-            color: var(--accent);
-            font-size: 0.52rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            box-shadow: 0 6px 16px rgba(26,40,80,0.06);
-            animation: none;
-            pointer-events: all;
-        }
-        .main-socials .social-help-callout::after { display: none; }
         .main-socials-row {
             display: flex;
             justify-content: center;
@@ -801,19 +708,15 @@
 
         /* Audio + time */
         .audio-cluster {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 20;
+            position: static;
             display: flex;
             align-items: center;
             gap: 0.35rem;
             padding: 0.28rem 0.4rem;
             border-radius: 999px;
-            background: #fff;
+            background: #faf9f6;
             border: 1px solid var(--line);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 22px rgba(26,40,80,0.08);
+            box-shadow: none;
         }
         .audio-cluster button {
             border: 0;
@@ -838,26 +741,6 @@
             cursor: pointer;
         }
 
-        .time-hud {
-            position: fixed;
-            top: 3.7rem;
-            left: 1rem;
-            z-index: 20;
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-            min-width: 132px;
-            padding: 0.5rem 0.7rem;
-            border-radius: var(--radius-sm);
-            background: #fff;
-            border: 1px solid var(--line);
-            color: var(--text);
-            font-size: 0.52rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 22px rgba(26,40,80,0.08);
-        }
         .time-hud-label { color: var(--accent); font-size: 0.46rem; }
         .time-hud strong {
             color: var(--text);
@@ -869,11 +752,9 @@
 
         @media (max-width: 700px) {
             body { padding-top: 4.2rem; padding-bottom: 8rem; }
-            .time-hud { top: 3.5rem; left: 0.75rem; }
             #sj-form { grid-template-columns: 1fr auto; border-radius: 16px; }
             .search-prefix { display: none; }
             .ascii-title { font-size: 0.42rem; }
-            .about-btn { bottom: 6.4rem; right: 0.8rem; }
         }
 
         /* Boot animations */
@@ -884,7 +765,6 @@
         body.page-booting .main-socials,
         body.page-booting .version-badge,
         body.page-booting .corner-btn,
-        body.page-booting .gif-speaker,
         body.page-booting .linktree-qr-corner {
             opacity: 0;
         }
@@ -896,10 +776,6 @@
         body:not(.page-booting) .main-socials { animation: enter-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
         body:not(.page-booting) .corner-btn.about-btn { animation: enter-fade 0.5s ease 0.3s both; }
         body:not(.page-booting) .linktree-qr-corner { animation: enter-fade 0.5s ease 0.35s both; }
-        body:not(.page-booting) .gif-speaker.speaker-a { animation: speaker-float 6s ease-in-out infinite, enter-fade 0.6s ease 0.35s both; }
-        body:not(.page-booting) .gif-speaker.speaker-b { animation: speaker-float 6s ease-in-out infinite, enter-fade 0.6s ease 0.42s both; }
-        body:not(.page-booting) .gif-speaker.speaker-c { animation: speaker-float 6s ease-in-out infinite, enter-fade 0.6s ease 0.5s both; }
-        body:not(.page-booting) .gif-speaker.speaker-d { animation: speaker-float 6s ease-in-out infinite, enter-fade 0.6s ease 0.58s both; }
         @keyframes enter-up {
             from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
@@ -910,7 +786,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            body::after, .gif-speaker, .ascii-title { animation: none !important; }
+            body::after, .ascii-title { animation: none !important; }
         }
 
         /* ── Chaos Easter Egg (black hole / void) ── */
@@ -986,7 +862,6 @@
         body.null-room-exiting .corner-btn,
         body.null-room-exiting .version-badge,
         body.null-room-exiting .linktree-qr-corner,
-        body.null-room-exiting .gif-speaker,
         body.null-room-exiting .cube,
         body.null-room-exiting .blob,
         body.null-room-exiting .tech-grid,
@@ -1109,9 +984,6 @@
         body.null-room .cube {
             animation: cube-suck 2.5s ease-in forwards !important;
         }
-        body.null-room .gif-speaker {
-            animation: speaker-suck 2.3s ease-in forwards !important;
-        }
         body.null-room .blob {
             animation: blob-suck 2.6s ease-in forwards !important;
             filter: hue-rotate(180deg) saturate(2);
@@ -1169,10 +1041,6 @@
             0%   { transform: translate3d(0,0,var(--z)) rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz)) scale(1); opacity: 1; }
             70%  { opacity: 0.6; }
             100% { transform: translate3d(calc(50vw - var(--x) - 50%), calc(50vh - var(--y) - 50%), 80px) rotateX(calc(var(--rx) + 120deg)) rotateY(calc(var(--ry) + 180deg)) scale(0.05); opacity: 0; }
-        }
-        @keyframes speaker-suck {
-            0%   { transform: translateY(0) rotate(-1deg) scale(1); opacity: 1; filter: none; }
-            100% { transform: translate(calc(50vw - 50%), calc(50vh - 50%)) rotate(40deg) scale(0.08); opacity: 0; filter: blur(4px) hue-rotate(90deg); }
         }
         @keyframes blob-suck {
             0%   { opacity: 1; }
@@ -1698,60 +1566,6 @@
             }
         }
 
-        .home-joke-popup {
-            position: fixed;
-            top: 50%;
-            right: 1.25rem;
-            z-index: 80;
-            width: min(260px, 30vw);
-            height: min(250px, 40vh);
-            padding: 0.35rem;
-            overflow: hidden;
-            border: 1px solid rgba(168, 242, 121, 0.4);
-            border-radius: 16px;
-            background: rgba(10, 23, 31, 0.94);
-            box-shadow: 0 0 22px rgba(168, 242, 121, 0.12), 0 18px 44px rgba(0, 0, 0, 0.45);
-            transform: translateY(-50%) translateX(18px) rotate(2deg);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 250ms ease, transform 250ms ease;
-            backdrop-filter: blur(14px);
-        }
-
-        .home-joke-popup.open {
-            transform: translateY(-50%) translateX(0) rotate(2deg);
-            opacity: 1;
-        }
-
-        .home-joke-popup.left {
-            right: auto;
-            left: 1.25rem;
-            transform: translateY(-50%) translateX(-18px) rotate(-2deg);
-        }
-
-        .home-joke-popup.left.open {
-            transform: translateY(-50%) translateX(0) rotate(-2deg);
-        }
-
-        .home-joke-popup .home-joke-option {
-            position: absolute;
-            inset: 0.35rem;
-            width: calc(100% - 0.7rem);
-            height: calc(100% - 0.7rem);
-            max-width: calc(100% - 0.7rem);
-            max-height: calc(100% - 0.7rem);
-            border: 0;
-            border-radius: 11px;
-            object-fit: contain;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .home-joke-popup .home-joke-option.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
         #sj-frame {
             position: fixed !important;
             inset: 0 !important;
@@ -1767,60 +1581,10 @@
             z-index: 1000 !important;
         }
 
-        @media (max-width: 700px) {
-            .home-joke-popup,
-            .home-joke-popup.left {
-                top: auto;
-                right: 1rem;
-                bottom: 7.6rem;
-                left: 1rem;
-                width: auto;
-                height: min(220px, 34vh);
-                transform: translateY(18px);
-                border-radius: 14px;
-            }
-
-            .home-joke-popup.open,
-            .home-joke-popup.left.open {
-                transform: translateY(0);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .home-joke-popup,
-            .home-joke-popup.open,
-            .home-joke-popup.left,
-            .home-joke-popup.left.open {
-                transition: opacity 1ms linear;
-            }
-        }
-
     </style>
 </head>
 
 <body class="page-booting">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="tech-grid"></div>
-    <div class="depth-field" aria-hidden="true"></div>
-    <div class="cube-layer" aria-hidden="true">
-        <div class="cube red" style="--size:120px;--x:8%;--y:16%;--z:40px;--rx:12deg;--ry:28deg;--rz:8deg;--dx:18px;--dy:-12px;--speed:9s;"></div>
-        <div class="cube dark" style="--size:78px;--x:77%;--y:13%;--z:100px;--rx:-18deg;--ry:42deg;--rz:-12deg;--dx:-14px;--dy:18px;--speed:11s;"></div>
-        <div class="cube red" style="--size:54px;--x:87%;--y:44%;--z:170px;--rx:31deg;--ry:-20deg;--rz:17deg;--dx:-20px;--dy:-8px;--speed:7s;"></div>
-        <div class="cube dark" style="--size:145px;--x:-5%;--y:61%;--z:20px;--rx:22deg;--ry:-34deg;--rz:-8deg;--dx:15px;--dy:15px;--speed:13s;"></div>
-        <div class="cube red" style="--size:92px;--x:70%;--y:78%;--z:75px;--rx:-11deg;--ry:30deg;--rz:4deg;--dx:-12px;--dy:-18px;--speed:10s;"></div>
-        <div class="cube dark" style="--size:48px;--x:25%;--y:84%;--z:130px;--rx:40deg;--ry:-28deg;--rz:15deg;--dx:22px;--dy:-10px;--speed:8s;"></div>
-    </div>
-    <div class="signal-lines" aria-hidden="true">
-        <span style="--sweep:8s;--delay:-2s;"></span>
-        <span style="--sweep:11s;--delay:-6s;"></span>
-        <span style="--sweep:14s;--delay:-10s;"></span>
-    </div>
-    <div class="corner-mark tl" aria-hidden="true"></div>
-    <div class="corner-mark tr" aria-hidden="true"></div>
-    <div class="corner-mark bl" aria-hidden="true"></div>
-    <div class="corner-mark br" aria-hidden="true"></div>
-
     <audio id="homeAudio" loop preload="auto" src="/music.mp3"></audio>
     <audio id="voidAudio" preload="auto" src="/void.mp3"></audio>
     <audio id="voidAudio2" preload="auto" src="/void2.mp3"></audio>
@@ -1848,21 +1612,6 @@
                 </div>
             </div>
         </details>
-        <div class="gif-conversation" aria-hidden="true">
-            <div class="gif-speaker speaker-a">
-                <img src="gifs/baller-roblox.gif" alt="" />
-            </div>
-            <div class="gif-speaker speaker-b">
-                <img src="gifs/r6.gif" alt="" />
-            </div>
-            <div class="gif-speaker speaker-c">
-                <img src="gifs/i-know-what-we're-gonna-do-today-baljeet.gif" alt="" />
-            </div>
-            <div class="gif-speaker speaker-d">
-                <img src="gifs/perry-the-platypus-phineas-and-ferb.gif" alt="" />
-            </div>
-        </div>
-
         <div class="glass">
             <pre class="ascii-title" tabindex="0" aria-label="INFINITE title. Click five times to access the hidden room.">██▓ ███▄    █  █████▒ ██▓ ███▄    █  ██▓▄▄▄█████▓▓█████
 ▓██▒ ██ ▀█   █▓██   ▒▓██▒ ██ ▀█   █▓██▒▓  ██▒ ▓▒▓█   ▀
@@ -1905,26 +1654,11 @@
             </div>
         </div>
         <div class="main-socials">
-            <div class="social-help-callout">Any issues? Ask here</div>
             <div class="main-socials-row">
                 <a class="main-social-link discord" href="https://discord.gg/vNzvXMWzRF" target="_blank" rel="noopener">DISCORD <span>Join the server</span></a>
                 <a class="main-social-link linktree" href="https://linktr.ee/Ashvir_" target="_blank" rel="noopener">LINKTREE <span>linktr.ee/Ashvir_</span></a>
                 <a class="main-social-link instagram" href="https://www.instagram.com/ashvir.singh_/" target="_blank" rel="noopener">INSTAGRAM <span>@ashvir.singh_</span></a>
             </div>
-        </div>
-
-        <div class="home-joke-popup" id="home-joke-popup" aria-hidden="true">
-            <img class="home-joke-option" src="gifs/baller-roblox.gif" alt="Roblox reaction" />
-            <img class="home-joke-option" src="gifs/r6.gif" alt="Rainbow Six reaction" />
-            <img class="home-joke-option" src="gifs/i-know-what-we're-gonna-do-today-baljeet.gif" alt="Phineas and Ferb reaction" />
-            <img class="home-joke-option" src="gifs/perry-the-platypus-phineas-and-ferb.gif" alt="Perry the Platypus reaction" />
-            <img class="home-joke-option" src="gifs/clash-royale-emotes.gif" alt="Clash Royale reaction" />
-            <img class="home-joke-option" src="gifs/fisherman-prince.gif" alt="Fisherman Prince reaction" />
-            <img class="home-joke-option" src="gifs/fnaf-fnaf-memes.gif" alt="FNAF reaction" />
-            <img class="home-joke-option" src="gifs/half-life-gman.gif" alt="Half-Life G-Man reaction" />
-            <img class="home-joke-option" src="gifs/invincible-rick-and-morty-invincible-rick-and-morty-meme.gif" alt="Invincible and Rick and Morty reaction" />
-            <img class="home-joke-option" src="gifs/emojify.gif" alt="Emoji reaction" />
-            <img class="home-joke-option" src="gifs/helldivers-helldivers-2.webp" alt="Helldivers reaction" />
         </div>
 
         <button type="button" class="gear-btn" onclick="openCfg()" title="Settings">⚙</button>
@@ -2191,41 +1925,6 @@
                 });
             }
 
-
-            var jokePopup = document.getElementById('home-joke-popup');
-            if (jokePopup) {
-                function showRandomHomeJoke() {
-                    var jokes = jokePopup.querySelectorAll('.home-joke-option');
-                    jokes.forEach(function(joke) { joke.classList.remove('active'); });
-                    if (jokes.length) {
-                        jokes[Math.floor(Math.random() * jokes.length)].classList.add('active');
-                    }
-
-                    jokePopup.classList.toggle('left', Math.random() < 0.5);
-                    window.setTimeout(function() {
-                        if (home && !home.classList.contains('hidden')) {
-                            jokePopup.classList.add('open');
-                            jokePopup.setAttribute('aria-hidden', 'false');
-                        }
-                    }, 250 + Math.random() * 650);
-
-                    window.setTimeout(function() {
-                        jokePopup.classList.remove('open');
-                        jokePopup.setAttribute('aria-hidden', 'true');
-                    }, 6750);
-                }
-
-                function scheduleRandomHomeJoke() {
-                    window.setTimeout(function() {
-                        if (home && !home.classList.contains('hidden')) {
-                            showRandomHomeJoke();
-                        }
-                        scheduleRandomHomeJoke();
-                    }, 12000 + Math.random() * 18000);
-                }
-
-                scheduleRandomHomeJoke();
-            }
 
             if (audio) {
                 audio.volume = 0.45;
@@ -2523,10 +2222,8 @@
                 var restoreSel = [
                     '.glass', '.main-socials', '.gear-btn', '.time-hud',
                     '.audio-cluster', '.corner-btn', '.version-badge',
-                    '.linktree-qr-corner', '.gif-speaker', '.cube', '.blob',
-                    '.tech-grid', '.depth-field', '.ascii-title', '.credit',
-                    '.divider', '.version', '.fallback-text', '.corner-mark',
-                    '.signal-lines'
+                    '.linktree-qr-corner', '.ascii-title', '.credit',
+                    '.divider', '.version', '.fallback-text', '.time-widget'
                 ].join(',');
 
                 document.querySelectorAll(restoreSel).forEach(function(el) {
