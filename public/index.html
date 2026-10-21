@@ -332,103 +332,6 @@
         #sj-form button:hover { background: var(--accent-2); }
         #sj-form button:active { transform: translateY(1px); }
 
-        /* Games */
-        .games-library { width: 100%; margin-top: 1rem; }
-        #games-toggle {
-            width: 100%;
-            text-align: left;
-            font-family: var(--font);
-            font-size: 0.6rem;
-            letter-spacing: 0.06em;
-            color: var(--muted);
-            background: #faf9f6;
-            border: 1px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: 0.7rem 0.9rem;
-            cursor: pointer;
-            transition: border-color 0.15s ease, color 0.15s ease;
-        }
-        #games-toggle:hover {
-            color: var(--text);
-            border-color: rgba(37, 99, 235, 0.35);
-        }
-        #games-panel { margin-top: 0.55rem; }
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.55rem;
-        }
-        .game-card {
-            padding: 0.9rem 1rem;
-            border-radius: var(--radius-sm);
-            background: #fff;
-            border: 1px solid var(--line);
-        }
-        .game-card h3 {
-            font-size: 0.72rem;
-            margin-bottom: 0.3rem;
-            color: var(--text);
-        }
-        .game-card p {
-            font-size: 0.58rem;
-            color: var(--muted);
-            margin-bottom: 0.65rem;
-            line-height: 1.5;
-        }
-        @media (max-width: 560px) {
-            .games-grid { grid-template-columns: minmax(0, 1fr); }
-        }
-        .launch-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.45rem 0.8rem;
-            border: 0;
-            border-radius: 999px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.58rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-        .launch-btn.node-b-launch {
-            margin-left: 0.35rem;
-            background: var(--accent-2);
-        }
-        .launch-btn.node-b-launch:hover {
-            filter: brightness(1.12);
-        }
-        .suggestion-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-top: 0.8rem;
-            padding: 0.9rem 1rem;
-            border: 1px solid var(--line);
-            border-radius: var(--radius-sm);
-            background: rgba(255, 255, 255, 0.62);
-        }
-        .suggestion-box h3 {
-            margin-bottom: 0.25rem;
-            color: var(--text);
-            font-size: 0.68rem;
-        }
-        .suggestion-box p {
-            color: var(--muted);
-            font-size: 0.55rem;
-            line-height: 1.5;
-        }
-        .suggestion-box .launch-btn {
-            flex-shrink: 0;
-        }
-        @media (max-width: 420px) {
-            .suggestion-box { align-items: flex-start; flex-direction: column; }
-        }
-
         /* Fallbacks */
         .fallback-container { margin-top: 1.2rem; }
         .fallback-text {
@@ -1986,98 +1889,13 @@
                 <button type="submit">GO</button>
             </form>
 
-            <section class="games-library" aria-label="Game links">
-                <button id="games-toggle" type="button" aria-expanded="false" aria-controls="games-panel">
-                     "Enjoy the contents within responsibly."
-                </button>
-                <div id="games-panel" hidden>
-                    <div class="games-grid">
-                        <div class="game-card">
-                            <h3>Skate 3 (DISABLED)</h3>
-                            <p>Powered by WebGPU - Runs locally in your browser.</p>
-                            <a href="https://skate.aaddpp.lol" class="launch-btn">Play Skate 3</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://skate.aaddpp.lol">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>GeoFS Flight Simulator</h3>
-                            <p>Fly anywhere in this browser-based flight simulator. If it has trouble loading, try Node B.</p>
-                            <a href="https://beta.geo-fs.com/geofs.php?a=22" class="launch-btn">Launch GeoFS</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://beta.geo-fs.com/geofs.php?a=22">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>Slow Roads</h3>
-                            <p>A relaxed, endless browser driving game.</p>
-                            <a href="https://slowroads.io" class="launch-btn">Drive Slow Roads</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://slowroads.io">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>Gartic Phone</h3>
-                            <p>A multiplayer drawing and guessing party game.</p>
-                            <a href="https://garticphone.com" class="launch-btn">Play Gartic Phone</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://garticphone.com">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>skribbl</h3>
-                            <p>Draw a word and see if your friends can guess it.</p>
-                            <a href="https://skribbl.io" class="launch-btn">Play skribbl.io</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://skribbl.io">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>NVIDIA</h3>
-                            <p>Stream supported PC games with NVIDIA GeForce NOW.</p>
-                            <a href="https://play.geforcenow.com" class="launch-btn">Open GeForce NOW</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://play.geforcenow.com">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>Death by AI</h3>
-                            <p>Try to survive the AI's absurd scenarios.</p>
-                            <a href="https://deathbyai.gg" class="launch-btn">Play Death by AI</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://deathbyai.gg">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>Lost</h3>
-                            <p>Explore locations and test your geography knowledge.</p>
-                            <a href="https://old.lostgamer.io/" class="launch-btn">Play Lostgamer</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://old.lostgamer.io/">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>Coolmath </h3>
-                            <p>Browse puzzles, strategy games, and more.</p>
-                            <a href="https://www.coolmathgames.com/" class="launch-btn">Browse Coolmath Games</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://www.coolmathgames.com/">Node B</button>
-                        </div>
-                        <div class="game-card">
-                            <h3>Neal.fun</h3>
-                            <p>A collection of interactive web experiments and mini-games.</p>
-                            <a href="https://neal.fun" class="launch-btn">Explore Neal.fun</a>
-                            <button type="button" class="launch-btn node-b-launch" data-game-url="https://neal.fun">Node B</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="suggestion-box" aria-label="Game suggestions">
-                <div>
-                    <h3>Have a game suggestion?</h3>
-                    <p>Send a recommendation for the games list.</p>
-                </div>
-                <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSefhXvPbx4ull0kNEqIcEcDnt0ARjP9Ts3Ehpp8iweR9CSaIQ/viewform?usp=publish-editor"
-                    class="launch-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >Suggest a game</a>
-            </section>
-
             <div class="fallback-container">
-                <p class="fallback-text">// site not loading properly? //</p>
                 <button id="uv-fallback-btn" type="button">
                     Node B
                 </button>
                 <button id="node-c-btn" type="button">Node-C</button>
             </div>
-            <div class="divider">
-                <p>"prepare for the unknown, as it wishes to prepare for you" — <span class="hl">Nitro / A.S</span></p>
-            </div>
+        
                 
             <div class="version" style="margin-top: 1rem;">VERSION: 1.3 BETA</div>
 
@@ -2373,15 +2191,6 @@
                 });
             }
 
-            var gamesToggle = document.getElementById('games-toggle');
-            var gamesPanel = document.getElementById('games-panel');
-            if (gamesToggle && gamesPanel) {
-                gamesToggle.addEventListener('click', function() {
-                    var expanded = gamesToggle.getAttribute('aria-expanded') === 'true';
-                    gamesToggle.setAttribute('aria-expanded', String(!expanded));
-                    gamesPanel.hidden = expanded;
-                });
-            }
 
             var jokePopup = document.getElementById('home-joke-popup');
             if (jokePopup) {

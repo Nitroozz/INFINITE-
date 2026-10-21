@@ -63,36 +63,3 @@ form.addEventListener("submit", async (event) => {
 	frame.go(url);
 });
 
-document.querySelectorAll(".launch-btn").forEach((gameLink) => {
-	gameLink.addEventListener("click", (event) => {
-		if (
-			event.button !== 0 ||
-			event.metaKey ||
-			event.ctrlKey ||
-			event.shiftKey ||
-			event.altKey
-		) {
-			return;
-		}
-
-		event.preventDefault();
-		if (gameLink.classList.contains("node-b-launch")) {
-			const nodeBUrl = new URL(window.location.href);
-			nodeBUrl.port = "8443";
-			nodeBUrl.pathname = "/";
-			nodeBUrl.search = new URLSearchParams({
-				url: gameLink.dataset.gameUrl,
-			}).toString();
-			const nodeBWindow = window.open(nodeBUrl.href, "_blank");
-			if (nodeBWindow) {
-				nodeBWindow.opener = null;
-			} else {
-				window.location.assign(nodeBUrl.href);
-			}
-			return;
-		}
-
-		address.value = gameLink.href;
-		form.requestSubmit();
-	});
-});
